@@ -40,4 +40,9 @@
  - ####tail -n 50 /var/log/auth.log: Displays the last 50 lines of the authentication log.
  
  - ####tail -n 50 /var/log/dmesg:Displays the last 50 lines of the kernel log messages.
+
+
+
+
+ ![Program Output](./images/Task4(15).png)
   
