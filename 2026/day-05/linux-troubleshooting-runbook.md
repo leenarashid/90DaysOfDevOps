@@ -25,3 +25,9 @@
    Useful for quickly checking recent Docker activity or errors.
 - tail -n 50 /var/log/kern.log: Shows the last 50 lines of the kernel log file (kern.log).
   Contains messages from the Linux kernel, including hardware events, driver messages, and system errors.
+
+###Restart Policy:Planning how to safely restart a service or process when it misbehaves, (sudo systemctl restart docker)  
+
+###Increase Log Verbosity:Make the service write more detailed logs for troubleshooting, (sudo dockerd --log-level debug)
+
+###Collect strace: strace is a tool to trace system calls a process makes,(sudo strace -p <docker-pid>)
