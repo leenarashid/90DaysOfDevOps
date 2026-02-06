@@ -1,3 +1,6 @@
+>## `I chose Docker service to perform the following tasks.`
+<img src="Task5/Task5-01.png" width="500">
+
 ># ENVIRONMENT BASICS:
 - #### `uname -a:` Displays detailed system information about your Linux machine in one line.
 
