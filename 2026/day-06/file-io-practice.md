@@ -30,3 +30,9 @@
 
 - > ### `tail -n 2 my_file.txt:` Displays the last 2 lines of the file content.
 <img src="Task6/Task6(10)(2).png" width="500">
+
+> # `Key Factors:`
+- ### Differences between different "cat" commands.
+- ### Difference between different "echo" commands.
+- ### Behavior ofecho command with tee -a.
+- ### Difference between the usage of "head " and "tail" command.
