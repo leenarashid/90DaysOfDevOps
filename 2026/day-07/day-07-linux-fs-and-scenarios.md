@@ -52,7 +52,7 @@
  - I would use it when:Installing software that doesn’t come with the default OS.
 
 
-<img src="images/Task7-15.png" width="500">
+<img src="images/Task7-15.png" width="900">
 
 
 
@@ -66,7 +66,7 @@
 - > ## `Part 2: Scenario-Based Practice `
 ----------------------------------------
 #### I installed two service nginx and docker to perfome the following monitoring tasks.
-<img src="images/Task7-1.png" width="500">
+<img src="images/Task7-1.png" width="900">
 
 - > ### `Scenario1: `
 ----------------------------------------
@@ -76,9 +76,9 @@
 > `systemctl status docker`
 
     These two commands will give the current status of the services on the Linux system that whether active or in active,running or stopped.
-<img src="images/Task7-0.png" width="500">
+<img src="images/Task7-0.png" width="700">
 
-<img src="images/Task7-3.png" width="500">
+<img src="images/Task7-3.png" width="700">
 
    
 
@@ -88,7 +88,7 @@
 
    Used to view and manage logs that are collected by the systemd journal and -n 50 flag provides the last 50 logs.
 
-<img src="images/Task7-4.png" width="500">
+<img src="images/Task7-4.png" width="900">
 
 
 
@@ -99,12 +99,12 @@
 - `systemctl is-enabled docker`
  
  Checks whether the nginx service is configured to start automatically at boot.
-<img src="images/Task7-5.png" width="500">
+<img src="images/Task7-5.png" width="700">
 
 - `sudo dmesg | tail -n 50`
 This command shows the last 50 kernel log messages from your system.(Good to practice.)
 
-<img src="images/Task7-6.png" width="500">
+<img src="images/Task7-6.png" width="900">
 
 
 
@@ -114,24 +114,24 @@ This command shows the last 50 kernel log messages from your system.(Good to pra
 > `htop`
 htop is an interactive, real-time process viewer for Linux.It shows running processes with live CPU, memory, and load usage in a colorful, easy-to-navigate interface, and lets you scroll, search, and manage processes (kill, renice, etc.) using the keyboard.
 
-<img src="images/Task7-7.png" width="500">
+<img src="images/Task7-7.png" width="900">
 
 
 - [x] ` Use a command that shows live CPU      usage`
 - `ps aux --sort=-%cpu | head -10`
 It displays the top 10 processes using the most CPU right now.Likewise we can also check memory.
-<img src="images/Task7-8.png" width="500">
+<img src="images/Task7-8.png" width="900">
 
 
 - `uptime` It is a command that shows how long the system has been running since the last reboot, along with the current time, number of users logged in, and system load averages
 
-<img src="images/Task7-9.png" width="500">
+<img src="images/Task7-9.png" width="700">
 
 
 - [x] `Note the PID (Process ID) of the top process` 
 - Once we get the PID through ps command, we can do `kill -9 <PID>` (optional) to get rid of unwanted processes.
 
-<img src="images/Task7-10.png" width="500">
+<img src="images/Task7-10.png" width="700">
 
 
 
@@ -139,7 +139,7 @@ It displays the top 10 processes using the most CPU right now.Likewise we can al
 ----------------------------------------
 - [x] `Check the status of the service `
 > `systemctl service nginx:`First step would be to check the status of the service.
-<img src="images/Task7-11.png" width="500">
+<img src="images/Task7-11.png" width="700">
 
 
 
@@ -151,17 +151,17 @@ It displays the top 10 processes using the most CPU right now.Likewise we can al
 Following are the commands to collect logs of the services as per requirement.
 - `journalctl -u nginx`: Collects the logs of the service.
 
-<img src="images/Task7-11.png" width="500">
+<img src="images/Task7-11.png" width="700">
 
 - `journalctl -u nginx -b`: Collects the logs at the boot time.
 
-<img src="images/Task7-12.png" width="500">
+<img src="images/Task7-12.png" width="900">
 
 - `journal -u nginx -f:`This command shows live SSH service logs as they happen.
-<img src="images/Task7-13.png" width="500">
+<img src="images/Task7-13.png" width="700">
 
 - > ### `Scenario 4: `
 ----------------------------------------
 - [x] Following screenshot shows the flow of alloting +x permissions thorugh chmod.
-<img src="images/Task7-16.png" width="500">
+<img src="images/Task7-16.png" width="900">
 
