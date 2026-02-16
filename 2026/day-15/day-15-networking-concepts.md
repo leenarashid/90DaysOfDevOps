@@ -3,7 +3,7 @@
 ----
 > ### Definition And Features Of DNS:
 -----
-####DNS (Domain Name System) is like the phonebook of the internet.
+#### DNS (Domain Name System) is like the phonebook of the internet.
 
 - It translates a human-readable domain name (like google.com) into a machine-readable IP address (like 142.250.190.14) so your computer knows where to connect.
 - Computers communicate using IP addresses, not names.But humans remember names better than numbers.User just enters the name instead of the whole IP address and is redirected to the site.
