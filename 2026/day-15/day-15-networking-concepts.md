@@ -130,13 +130,6 @@ An IPv4 (Internet Protocol version 4) address is a 32-bit numeric address used t
 > #### Some notes for ellaboration of IP adress ranges, number of useful hosts,subnet masks and hosts per subnet.
 
 
-<img src="Images/4(1).jpg" width="900">
-
-<img src="Images/4(2).jpg" width="900">
-
-
-<img src="Images/4(3).jpg" width="900">
-
 
 
 > ## Task4 
