@@ -6,7 +6,7 @@
 - Print Hello, DevOps! using echo
 - Make it executable and run it
 
-> **[ Script](scripts/hello.sh)**
+> **[ Script](Scripts/hello.sh)**
 
 
 >**Output**
@@ -20,7 +20,7 @@
 - [ ] A variable for your NAME
 - [ ] A variable for your ROLE (e.g., "DevOps Engineer")
 - [ ] Print: Hello, I am NAME and I am ROLE.
-> **[ Script](scripts/variable.sh)**
+> **[ Script](Scripts/variable.sh)**
 
 > **Output**
 <img src="Images/output2.png" width="900">
@@ -31,7 +31,7 @@
 - [ ] Asks the user for their name using read
 - [ ] Asks for their favourite tool
 - [ ] Prints: Hello <name>, your favourite tool is tool
-> **[ Script](scripts/greet.sh)**
+> **[ Script](Scripts/greet.sh)**
 
 > **Output**
 
@@ -46,8 +46,9 @@
 - [ ] Prints whether it is positive, negative, or zero
 
 
-> **[ Script](scripts/check_number.sh)**
+> **[ Script](Scripts/check_number.sh)**
 
+> **Output**
 
 
 <img src="Images/4-1.png" width="900">
@@ -60,9 +61,9 @@
 - [ ] Checks if the file exists using -f
 - [ ] Prints appropriate message
 
-> **[ Script](scripts/file_check.sh)**
+> **[ Script](Scripts/file_check.sh)**
 
-
+> **Output**
 
 <img src="Images/4-2.png" width="900">
 
@@ -76,8 +77,9 @@
 - If n — prints "Skipped."
 
 
-> **[ Script](scripts/server_check.sh)**
+> **[ Script](Scripts/server_check.sh)**
 
+> **Output**
 <img src="Images/5-1.png" width="900">
 
 <img src="Images/5-2.png" width="900">
