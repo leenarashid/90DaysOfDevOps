@@ -79,6 +79,7 @@
 
 > **[ Script](Scripts/server_check.sh)**
 
+> **Output**
 <img src="Images/5-1.png" width="900">
 
 <img src="Images/5-2.png" width="900">
