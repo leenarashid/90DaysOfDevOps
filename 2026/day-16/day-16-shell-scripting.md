@@ -10,7 +10,7 @@
 
 
 >**Output**
-<img src="images/output1.png" width="900">
+<img src="Images/output1.png" width="900">
 
 
 
@@ -23,7 +23,7 @@
 > **[ Script](scripts/variable.sh)**
 
 > **Output**
-<img src="images/output2.png" width="900">
+<img src="Images/output2.png" width="900">
 
 
 > #### TASK3: User Input with read
@@ -35,7 +35,7 @@
 
 > **Output**
 
-<img src="images/output3.png" width="900">
+<img src="Images/output3.png" width="900">
 
 
 
@@ -50,7 +50,7 @@
 
 
 
-<img src="images/4-1.png" width="900">
+<img src="Images/4-1.png" width="900">
 
 
 
@@ -64,7 +64,7 @@
 
 
 
-<img src="images/4-2.png" width="900">
+<img src="Images/4-2.png" width="900">
 
 
  > #### TASK5: Combine It All
@@ -78,9 +78,9 @@
 
 > **[ Script](scripts/server_check.sh)**
 
-<img src="images/5-1.png" width="900">
+<img src="Images/5-1.png" width="900">
 
-<img src="images/5-2.png" width="900">
+<img src="Images/5-2.png" width="900">
 
 
 
