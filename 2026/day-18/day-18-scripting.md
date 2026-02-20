@@ -1,6 +1,6 @@
 ##Day 18 – Shell Scripting: Functions & intermediate Concepts
 ----
-###Task:1 Basic Functions
+### Task:1 Basic Functions
 - Create functions.sh with:
    - [ ]  A function greet that takes a name as argument and prints Hello, <name>!
    - [ ] A function add that takes two numbers and prints their sum
@@ -14,7 +14,7 @@
 
 <img src="Images/1.png" width="900">
 
-###Task:2 Functions with Return Values
+### Task:2 Functions with Return Values
 - Create disk_check.sh with:
    - [ ] A function check_disk that checks disk usage of / using df -h
    - [ ] A function check_memory that checks free memory using free -h
@@ -24,14 +24,14 @@
 
 >>**[ Script](Scripts/system_check.sh)**
 
-<img src="Images/1.png" width="900">
+<img src="Images/2.png" width="900">
 
 
 
 
 
 
-###Task 3: Strict Mode — set -euo pipefail
+### Task 3: Strict Mode — set -euo pipefail
 - Create strict_demo.sh with set -euo pipefail at the top
 - Try using an undefined variable — what happens with set -u?
 - Try a command that fails — what happens with set -e?
@@ -64,7 +64,7 @@
 <img src="Images/3-5-2.png" width="900">
 
 
-###Task 4: Local Variables
+### Task 4: Local Variables
 - Create local_demo.sh with:
   - [ ] A function that uses local keyword for variables
   - [ ] Show that local variables don't leak outside the function
@@ -76,7 +76,7 @@
 <img src="Images/4.png" width="900">
 
 
-###Task 5: Build a Script — System Info Reporter
+### Task 5: Build a Script — System Info Reporter
 - Create system_info.sh that uses functions for everything:
 
 - A function to print hostname and OS info
@@ -97,7 +97,7 @@
 
 
 
-####NOTES:
+#### NOTES:
 - `set -e` stops the scirpt write away when it find invalid action.For example a directory once created, will not be created again.An error will be displayed and any code line after that will not work.
 Stops immediately as soon as any error is found.
 - `set -o` stops the code if undefined variable is found.
