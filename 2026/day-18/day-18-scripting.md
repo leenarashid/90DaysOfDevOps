@@ -104,5 +104,5 @@ Stops immediately as soon as any error is found.
 - `set -o pipefail`: In case we have false | true ,in case error is detected, the code below it will continue to work and return with status 0.Until or unless we accompany this command with `set -e`.
 
 
--` set -euo pipefail`: This command will work for all the above cases that includes stopping of the code lines once errors are detected.
+- ` set -euo pipefail`: This command will work for all the above cases that includes stopping of the code lines once errors are detected.
 Exits on error.Exits on undefined variable.Detect failures inside pipelines.
