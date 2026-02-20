@@ -45,7 +45,7 @@
 
 <img src="Images/3-2.png" width="900">
 
->>**[ Script](Scripts/set_u.sh)**
+>>**[ Script](Scripts/set_o.sh)**
 
 <img src="Images/3-3.png" width="900">
 
