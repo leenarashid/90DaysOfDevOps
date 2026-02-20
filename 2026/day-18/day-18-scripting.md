@@ -87,7 +87,7 @@
 - A main function that calls all of the above with section headers
 - Use set -euo pipefail at the top
 
->>**[ Script](Scripts/for_loop.sh)**
+>>**[ Script](Scripts/system_info.sh)**
 
 
 
