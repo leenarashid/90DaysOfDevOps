@@ -1,5 +1,5 @@
 
->>**[ Script](log_analyzer.sh)**
+>>**[ Script](Script/log_analyzer.sh)**
 
 
 #### Task 1: Input and Validation
