@@ -64,4 +64,6 @@ error_failed_count
 critical_count
 top_errormsg_count
 log_report
+archiving_report
 }
+main
