@@ -74,8 +74,8 @@ Then extend the matrix to also include 2 operating systems — how many total jo
 >>**[ Script](workflows/fail_fast.yml)**
 
 
-<img src="images/5.png" width="500">
-<img src="images/5-2.png" width="500">
+<img src="images/5.png" width="400">
+<img src="images/5-2.png" width="400">
 
 
 **fail-fast:true** 
