@@ -62,7 +62,7 @@ Then extend the matrix to also include 2 operating systems — how many total jo
 
 >>**[ Script](workflows/matrix.yml)**
 
-<img src="Images/4.png" width="900">
+<img src="images/4.png" width="900">
 ------
 
 ### Task 5: Exclude & Fail-Fast
