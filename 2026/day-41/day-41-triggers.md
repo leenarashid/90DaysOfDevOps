@@ -68,30 +68,8 @@ Then extend the matrix to also include 2 operating systems — how many total jo
 **fail-fast:true** 
   If one job fails, all the jobs after it will also fail and contrary to this in **fail-fast:false**
   if one job fails, other jobs will be continued.
----
 
-## Hints
-- PR trigger: `on: pull_request: branches: [main]`
-- Cron trigger: `on: schedule: - cron: '0 0 * * *'`
-- Manual trigger: `on: workflow_dispatch: inputs:`
-- Matrix: `strategy: matrix: python-version: [...]`
-- Exclude: `exclude: - os: windows-latest python-version: "3.10"`
 
----
-
-## Documentation
-Create `day-41-triggers.md` with:
-- Each workflow YAML
-- Screenshots of runs
-- The cron expression answer from Task 2
-
----
-
-## Submission
-1. Add `day-41-triggers.md` to `2026/day-41/`
-2. Commit and push to your fork
-
----
 
 ## Learn in Public
 Share your matrix build screenshot — seeing multiple jobs run in parallel for the first time is a great moment.
