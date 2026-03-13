@@ -1,0 +1,8 @@
+name: Manual Workflow
+on: workflow_dispatch
+jobs:
+  environment_input:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Take input
+        run: echo "The input environment taken is:${{ github.event.inputs.environment }}"

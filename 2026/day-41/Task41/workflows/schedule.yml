@@ -1,0 +1,14 @@
+name: Daily Workflow
+on:
+  schedule:
+    - cron: 0 0 * * *
+jobs:
+  schedule_update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print Schedule message
+        run: |
+          echo "Workflow running at midnight UTC"
+          date
+
+# workflow_dispatch: donot need to add since its a manual trigger
