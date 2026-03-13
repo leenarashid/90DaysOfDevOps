@@ -1,0 +1,17 @@
+name: pr-check
+
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize]
+    
+
+jobs:
+  branch-print:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Branch Check
+        run: 'echo "The branch name is: ${{ github.head_ref }}"'
+
+      - name: New Branch
+        run: 'echo "A  branch ${{ github.head_ref }} has been created" '
