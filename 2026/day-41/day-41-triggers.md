@@ -8,6 +8,20 @@
 5. Watch the workflow run automatically
 
 **Verify:** Does it show up on the PR page?
+**Answer:**
+
+Yes — the workflow will show up on the PR page.
+
+
+
+- [ ] A Checks section on the PR
+
+- [ ] The workflow PR Check running automatically
+
+- [ ] Status like ✅ All checks passed
+
+
+
 
 >>**[ Script](workflows/pr_check.yml)**
 <img src="images/task1.png" width="500">
@@ -35,7 +49,7 @@
 <img src="images/task2-0.png" width="500">
 
 <img src="images/task2-1.png" width="500">
----
+-----
 
 ### Task 4: Matrix Builds
 Create `.github/workflows/matrix.yml` that:
@@ -49,7 +63,7 @@ Then extend the matrix to also include 2 operating systems — how many total jo
 >>**[ Script](workflows/matrix.yml)**
 
 <img src="Images/4.png" width="900">
----
+------
 
 ### Task 5: Exclude & Fail-Fast
 1. In your matrix, **exclude** one specific combination (e.g., Python 3.10 on Windows)
