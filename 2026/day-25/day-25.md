@@ -68,9 +68,9 @@ git reset --hard is considered destructive because it resets the commit history,
 
 
 
-<img src="assets/2-3.png" width="900">
+<img src="assets/2-3.png" width="700">
 
-<img src="assets/2-2.png" width="900">
+<img src="assets/2-2.png" width="700">
 
 **Explanition:** If **revert** operation is done on single file,it will give conflicts otherwise on separate files, revert works perfectly.
 
