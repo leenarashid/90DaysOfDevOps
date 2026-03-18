@@ -8,17 +8,17 @@
 - [x] Now create another branch feature-signup, add commits to it — but also add a commit to main before merging
 - [x] Merge feature-signup into main — what happens this time?
 
-<img src="images/1-1.png" width="500">
-<img src="images/1-2.png" width="500">
+<img src="images/1-1.png" width="600">
+<img src="images/1-2.png" width="600">
 
-<img src="images/1-3(merge).png" width="500">
+<img src="images/1-3(merge).png" width="600">
 
-<img src="images/1-4(signup).png" width="500">
+<img src="images/1-4(signup).png" width="600">
 
-<img src="images/1-5.png" width="500">
+<img src="images/1-5.png" width="600">
 
 
-<img src="images/1-6.png" width="500">
+<img src="images/1-6.png" width="600">
 
 - [x] What is a fast-forward merge?
  **Answer:**
@@ -47,17 +47,17 @@ Git creates a merge commit when the branches have diverged, meaning both the sou
 - [x] Switch to feature-dashboard and rebase it onto main
 - [x] Observe your git log --oneline --graph --all — how does the history look compared to a merge?
 
-<img src="images/2-1.png" width="500">
+<img src="images/2-1.png" width="600">
 
 
 
-<img src="images/2-2.png" width="500">
+<img src="images/2-2.png" width="600">
 
 
-<img src="images/2-3.png" width="500">
+<img src="images/2-3.png" width="600">
 
 
-<img src="images/2-4.png" width="500">
+<img src="images/2-4.png" width="600">
 
 
 - [x] What does rebase actually do to your commits?
@@ -83,17 +83,17 @@ Git creates a merge commit when the branches have diverged, meaning both the sou
 - [x] Now create another branch feature-settings, add a few commits
 - [x] Merge it into main without --squash (regular merge) — compare the history
 
-<img src="images/3-1.png" width="500">
+<img src="images/3-1.png" width="600">
 
-<img src="images/3-2(main).png" width="500">
+<img src="images/3-2(main).png" width="600">
 
-<img src="images/3-3(squash).png" width="500">
-
-
-<img src="images/3-4(settings).png" width="500">
+<img src="images/3-3(squash).png" width="600">
 
 
-<img src="images/3-5.png" width="500">
+<img src="images/3-4(settings).png" width="600">
+
+
+<img src="images/3-5.png" width="600">
 
 
 
@@ -121,10 +121,10 @@ Git creates a merge commit when the branches have diverged, meaning both the sou
 
 
 
-<img src="images/fo-1.png" width="500">
+<img src="images/fo-1.png" width="600">
 
 
-<img src="images/fo-2.png" width="500">
+<img src="images/fo-2.png" width="600">
 
 
 <img src="images/fo-2-1.png" width="500">
