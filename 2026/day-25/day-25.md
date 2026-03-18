@@ -6,23 +6,23 @@
 
 
 
-<img src="assets/1.png" width="900">
+<img src="assets/1.png" width="700">
 
 
 
 
 >- **Use git reset --soft to go back one commit — what happens to the changes?**
-<img src="assets/1-2.png" width="900">
+<img src="assets/1-2.png" width="700">
 
 
 >- **Re-commit, then use git reset --mixed to go bak one commit — what happens now?**
 
-<img src="assets/1-3.png" width="900">
+<img src="assets/1-3.png" width="700">
 
 
 >- **Re-commit, then use git reset --hard to go back one commit — what happens this time?**
 
-<img src="assets/1-4.png" width="900">
+<img src="assets/1-4.png" width="700">
 
 #### Notes:
 
