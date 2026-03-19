@@ -40,8 +40,23 @@
 
 - Write in your notes: When would you use each restart policy?
 
+`restart: always`:
+Is preferable when:
+- Critical production services
+
+- Apps that must always stay running
+
+- Web servers, APIs
+
+`restart: on-failure:`
+Is preferable when:
 
 
+- Apps that should restart only if they crash
+
+- Background jobs / workers
+
+- Error-prone processes
 
 -----
 
@@ -77,3 +92,26 @@
 <img src="assets/6.png" width="600">
 
 [Docker Compose File](assets/docker-compose(2+3).yml)
+
+**Notes:**
+
+1)Multiple replicas of the web service are created
+
+Containers run successfully if no port conflict
+
+Each container gets a different dynamic port (if not fixed)
+
+2)Fixed port mapping causes port conflicts
+
+No built-in load balancing in Docker Compose
+
+Hard to access multiple containers manually
+
+
+3)Port mapping binds:
+
+HOST_PORT → CONTAINER_PORT
+
+Only one container can use a specific host port
+
+Scaling creates multiple containers → all need same port → conflict
