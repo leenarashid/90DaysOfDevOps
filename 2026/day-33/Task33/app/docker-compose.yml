@@ -1,0 +1,7 @@
+services:
+  nginx:
+    image: nginx
+    build: .
+    container_name: nginx-ctr
+    ports:
+     - "8080:80"
