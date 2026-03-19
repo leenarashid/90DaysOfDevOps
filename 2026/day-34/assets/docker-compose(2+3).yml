@@ -1,0 +1,56 @@
+networks:
+  3-tier-network:
+    driver: bridge
+
+services:
+
+  web:
+    build: .
+    ports:
+      - "5000" # Specifies just the container port, Docker will assign dynamic host ports so replicas don't collide
+    environment:
+      - POSTGRES_DB=testdb
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+    depends_on:
+      db:
+        condition: service_healthy
+      cache:
+        condition: service_started
+    networks:
+      - 3-tier-network
+    labels:
+      3-tier: "web"
+
+  db:
+    image: postgres:15-alpine
+    restart: on-failure
+    environment:
+      - POSTGRES_DB=testdb
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -h localhost"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - 3-tier-network
+    labels:
+      3-tier: "database"
+
+  cache:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    networks:
+      - 3-tier-network
+    labels:
+      3-tier: "cache"
+
+volumes:
+  postgres_data:
