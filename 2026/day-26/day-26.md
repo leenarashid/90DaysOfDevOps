@@ -146,3 +146,27 @@ gh pr merge supports these merge methods:
 - How could gh run and gh workflow be useful in a CI/CD pipeline?
 **Answer**
 `gh run` and `gh workflow` can be used in CI/CD pipelines to monitor, trigger, and manage GitHub Actions programmatically, no need to hadle the tasks manually.
+-----
+#### Task 6: Useful gh Tricks
+Explore and try these — add the ones you find useful to your git-commands.md:
+
+>gh api — make raw GitHub API calls from the terminal
+
+Used to make raw API requests to GitHub.Useful for automation, scripts, and accessing data not available in standard commands
+
+>gh gist — create and manage GitHub Gists
+
+Create, view, and manage GitHub Gists.Useful for sharing code snippets quickly.
+
+>gh release — create and manage releases
+
+Create and manage project releases.Used for versioning and distributing builds
+
+
+>gh alias — create shortcuts for commands you use often
+
+Create custom shortcuts for frequent commands.
+
+>gh search repos — search GitHub repos from the terminal
+
+Search GitHub repos from terminal.Helps discover projects without leaving CLI
