@@ -242,7 +242,7 @@ In a real cloud cluster, the EXTERNAL-IP would be a public IP address or hostnam
 
 **Verify:** What does the EXTERNAL-IP column show? Why is it `<pending>` on a local cluster?
 
-![image](assest/5-1.png) 
+![image](assets/5-1.png) 
 
 
 ---
