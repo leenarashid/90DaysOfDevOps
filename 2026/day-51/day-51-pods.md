@@ -273,7 +273,7 @@ kubectl delete -f nginx-pod.yaml
 # Verify everything is gone
 kubectl get pods
 ```
-![image](images/task6.png)
+![image](images/Task6.png)
 Notice that when you delete a standalone Pod, it is gone forever. There is no controller to recreate it. This is why in production you use Deployments (coming on Day 52) instead of bare Pods.
 
 
