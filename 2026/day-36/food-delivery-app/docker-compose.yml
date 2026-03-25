@@ -1,0 +1,46 @@
+services:
+   mysql:
+      image: mysql:8.0
+      container_name: order-data-ctr
+      ports:
+        - "3307:3306"
+      environment:           
+        MYSQL_ROOT_PASSWORD: root
+        MYSQL_DATABASE: order-db
+      healthcheck:
+      # Use the built-in script from the official image
+        test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+        interval: 10s
+        timeout: 5s
+        retries: 3
+        start_period: 30s
+      volumes:
+        - food-delivery-vol:/var/lib/mysql
+      networks:
+        - food-dev-network  
+   bankapp:
+    image: dockerleena778/food-delivery-app:v1.2
+    container_name: python-app-ctr
+    ports:
+     - "5000:5000"
+    environment: 
+        DATABASE_URL: mysql://${MYSQL_USER}:${MYSQL_PASSWORD}@db:3306/${MYSQL_DATABASE}  
+        MYSQL_HOST: order-data-ctr # host will be the ctr on which this ctr is depending
+        MYSQL_PORT: 3306
+        MYSQL_DATABASE: order-db
+      
+        MYSQL_USER: root
+        MYSQL_ROOT_PASSWORD: root
+
+    depends_on:
+      mysql: 
+        condition: service_healthy
+    networks:
+      - food-dev-network
+
+ 
+networks:
+   food-dev-network:
+     driver: bridge
+volumes:
+   food-delivery-vol:          
