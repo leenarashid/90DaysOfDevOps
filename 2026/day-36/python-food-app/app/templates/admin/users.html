@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block title %}Users – SwiftBite Admin{% endblock %}
+{% block content %}
+<div class="container">
+  <div class="admin-header">
+    <h1 class="page-title">Users</h1>
+    <div class="admin-nav">
+      <a href="{{ url_for('admin.dashboard') }}" class="admin-tab">Dashboard</a>
+      <a href="{{ url_for('admin.orders') }}" class="admin-tab">Orders</a>
+      <a href="{{ url_for('admin.users') }}" class="admin-tab active">Users</a>
+    </div>
+  </div>
+  <div class="admin-table-wrap">
+    <table class="admin-table">
+      <thead>
+        <tr><th>ID</th><th>Name</th><th>Email</th><th>Phone</th><th>Orders</th><th>Role</th><th>Joined</th></tr>
+      </thead>
+      <tbody>
+        {% for u in users %}
+        <tr>
+          <td>{{ u.id }}</td>
+          <td>
+            <div style="display:flex;align-items:center;gap:.5rem">
+              <span class="user-avatar-sm">{{ u.name[0].upper() }}</span>
+              {{ u.name }}
+            </div>
+          </td>
+          <td>{{ u.email }}</td>
+          <td>{{ u.phone or '—' }}</td>
+          <td>{{ u.orders|length }}</td>
+          <td>
+            {% if u.is_admin %}
+            <span class="badge badge-purple">Admin</span>
+            {% else %}
+            <span class="badge badge-gray">Customer</span>
+            {% endif %}
+          </td>
+          <td>{{ u.created_at.strftime('%b %d, %Y') }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

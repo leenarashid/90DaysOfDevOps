@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block title %}Manage Orders – SwiftBite Admin{% endblock %}
+{% block content %}
+<div class="container">
+  <div class="admin-header">
+    <h1 class="page-title">Manage Orders</h1>
+    <div class="admin-nav">
+      <a href="{{ url_for('admin.dashboard') }}" class="admin-tab">Dashboard</a>
+      <a href="{{ url_for('admin.orders') }}" class="admin-tab active">Orders</a>
+      <a href="{{ url_for('admin.users') }}" class="admin-tab">Users</a>
+    </div>
+  </div>
+
+  <!-- Filters -->
+  <div class="filters" style="margin-bottom:1.5rem">
+    <a href="{{ url_for('admin.orders') }}" class="filter-chip {% if not status_filter %}active{% endif %}">All</a>
+    {% for s in statuses %}
+    <a href="{{ url_for('admin.orders', status=s) }}" class="filter-chip {% if status_filter == s %}active{% endif %}">{{ s }}</a>
+    {% endfor %}
+  </div>
+
+  <div class="admin-table-wrap">
+    <table class="admin-table">
+      <thead>
+        <tr><th>#</th><th>Customer</th><th>Restaurant</th><th>Items</th><th>Total</th><th>Status</th><th>Date</th><th>Update</th></tr>
+      </thead>
+      <tbody>
+        {% for order in orders %}
+        <tr>
+          <td><a href="{{ url_for('orders.order_detail', order_id=order.id) }}">#{{ order.id }}</a></td>
+          <td>{{ order.customer.name }}</td>
+          <td>{{ order.restaurant.name }}</td>
+          <td>{{ order.items|length }} item(s)</td>
+          <td>${{ '%.2f'|format(order.total_amount) }}</td>
+          <td><span class="status-pill status-{{ order.status.lower().replace(' ', '-') }}">{{ order.status }}</span></td>
+          <td>{{ order.created_at.strftime('%b %d, %H:%M') }}</td>
+          <td>
+            <form method="POST" action="{{ url_for('admin.update_order_status', order_id=order.id) }}" style="display:flex;gap:.5rem">
+              <select name="status" class="form-select-sm">
+                {% for s in statuses %}
+                <option value="{{ s }}" {% if order.status == s %}selected{% endif %}>{{ s }}</option>
+                {% endfor %}
+              </select>
+              <button type="submit" class="btn-sm btn-primary">Update</button>
+            </form>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+{% block title %}Order #{{ order.id }} – SwiftBite{% endblock %}
+{% block content %}
+<div class="container">
+  <div class="order-detail-wrap">
+
+    <!-- Status Banner -->
+    <div class="status-banner status-{{ order.status.lower().replace(' ', '-') }}">
+      <div class="status-info">
+        <h1 class="status-title">
+          {% if order.status == 'Delivered' %}🎉 Order Delivered!
+          {% elif order.status == 'Out for Delivery' %}🚴 On the Way!
+          {% elif order.status == 'Preparing' %}👨‍🍳 Being Prepared
+          {% elif order.status == 'Confirmed' %}✅ Order Confirmed
+          {% elif order.status == 'Cancelled' %}❌ Order Cancelled
+          {% else %}⏳ Order Placed{% endif %}
+        </h1>
+        <p>Order #{{ order.id }} from <strong>{{ order.restaurant.name }}</strong></p>
+        {% if order.status not in ('Delivered', 'Cancelled') %}
+        <p class="eta">Estimated delivery: <strong>{{ order.estimated_delivery }}</strong></p>
+        {% endif %}
+      </div>
+    </div>
+
+    <!-- Progress Tracker -->
+    {% if order.status != 'Cancelled' %}
+    <div class="progress-tracker">
+      {% set steps = ['Pending', 'Confirmed', 'Preparing', 'Out for Delivery', 'Delivered'] %}
+      {% set icons = ['📋', '✅', '👨‍🍳', '🚴', '🎉'] %}
+      {% for step in steps %}
+      {% set i = loop.index0 %}
+      <div class="tracker-step {% if order.status_step >= i %}active{% endif %} {% if order.status_step > i %}done{% endif %}">
+        <div class="step-icon">{{ icons[i] }}</div>
+        <div class="step-label">{{ step }}</div>
+      </div>
+      {% if not loop.last %}
+      <div class="tracker-line {% if order.status_step > i %}done{% endif %}"></div>
+      {% endif %}
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    <div class="order-detail-grid">
+      <!-- Items -->
+      <div class="order-items-card">
+        <h3>Order Items</h3>
+        <div class="order-items-list">
+          {% for item in order.items %}
+          <div class="order-line">
+            <span class="line-qty">{{ item.quantity }}×</span>
+            <span class="line-name">{{ item.menu_item.name }}</span>
+            <span class="line-price">${{ '%.2f'|format(item.subtotal) }}</span>
+          </div>
+          {% endfor %}
+        </div>
+        <div class="order-summary-totals">
+          <div class="total-row"><span>Subtotal</span><span>${{ '%.2f'|format(order.subtotal) }}</span></div>
+          <div class="total-row"><span>Delivery</span><span>${{ '%.2f'|format(order.delivery_fee) }}</span></div>
+          <div class="total-row total-final"><span>Total</span><span>${{ '%.2f'|format(order.total_amount) }}</span></div>
+        </div>
+      </div>
+
+      <!-- Info -->
+      <div class="order-info-card">
+        <h3>Delivery Info</h3>
+        <div class="info-row"><span>📍</span><span>{{ order.delivery_address }}</span></div>
+        <div class="info-row"><span>📅</span><span>{{ order.created_at.strftime('%B %d, %Y at %I:%M %p') }}</span></div>
+        <div class="info-row"><span>🏪</span><span>{{ order.restaurant.name }}</span></div>
+        {% if order.notes %}
+        <div class="info-row"><span>📝</span><span>{{ order.notes }}</span></div>
+        {% endif %}
+
+        <div class="order-actions">
+          {% if order.status in ('Pending', 'Confirmed') %}
+          <form method="POST" action="{{ url_for('orders.cancel_order', order_id=order.id) }}"
+                onsubmit="return confirm('Cancel this order?')">
+            <button type="submit" class="btn-danger btn-full">Cancel Order</button>
+          </form>
+          {% endif %}
+          <a href="{{ url_for('orders.history') }}" class="btn-outline btn-full">← All Orders</a>
+          <a href="{{ url_for('main.index') }}" class="btn-primary btn-full">Order Again 🚀</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script>
+// Auto-refresh if order is in-progress
+const status = "{{ order.status }}";
+if (!['Delivered','Cancelled'].includes(status)) {
+  setTimeout(() => location.reload(), 30000);
+}
+</script>
+{% endblock %}

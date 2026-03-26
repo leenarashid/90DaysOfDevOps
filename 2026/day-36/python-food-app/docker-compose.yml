@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    container_name: swiftbite_web
+    ports:
+      - "5000:5000"
+    env_file:
+      - .env
+    volumes:
+      - web-data:/app
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - swiftbite_net
+    restart: unless-stopped
+
+  db:
+    image: mysql:8.0
+    container_name: swiftbite_db
+    env_file:
+      - .env
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+    networks:
+      - swiftbite_net
+    restart: unless-stopped
+
+volumes:
+  web-data:
+  mysql_data:
+  
+
+networks:
+  swiftbite_net:
+    driver: bridge

@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block title %}My Orders – SwiftBite{% endblock %}
+{% block content %}
+<div class="container">
+  <h1 class="page-title">My Orders</h1>
+  {% if orders %}
+  <div class="orders-list">
+    {% for order in orders %}
+    <a href="{{ url_for('orders.order_detail', order_id=order.id) }}" class="order-row">
+      <div class="order-row-left">
+        <div class="order-number">#{{ order.id }}</div>
+        <div class="order-meta">
+          <strong>{{ order.restaurant.name }}</strong>
+          <span>{{ order.created_at.strftime('%b %d, %Y') }}</span>
+        </div>
+      </div>
+      <div class="order-row-center">
+        <div class="order-items-preview">
+          {% for item in order.items[:2] %}
+          <span>{{ item.quantity }}× {{ item.menu_item.name }}</span>{% if not loop.last %}, {% endif %}
+          {% endfor %}
+          {% if order.items|length > 2 %} +{{ order.items|length - 2 }} more{% endif %}
+        </div>
+      </div>
+      <div class="order-row-right">
+        <span class="status-pill status-{{ order.status.lower().replace(' ', '-') }}">{{ order.status }}</span>
+        <span class="order-total">${{ '%.2f'|format(order.total_amount) }}</span>
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+  {% else %}
+  <div class="empty-state">
+    <div class="empty-icon">📦</div>
+    <h3>No orders yet</h3>
+    <p>When you place an order, it'll appear here.</p>
+    <a href="{{ url_for('main.index') }}" class="btn-primary">Browse Restaurants</a>
+  </div>
+  {% endif %}
+</div>
+{% endblock %}

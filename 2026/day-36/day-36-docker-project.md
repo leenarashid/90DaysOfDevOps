@@ -1,4 +1,4 @@
-# Day 36 – Docker Project: Dockerize a Full Application
+### Day 36 – Docker Project: Dockerize a Full Application
 
 ---
 
@@ -11,12 +11,10 @@ Choose **one** of these (or use your own project):
 - A **static website** served by Nginx with a backend API
 - Any app from your GitHub that doesn't have Docker yet
 
- [app](docker-repo/app.py)
+ [app](python-food-app/run.py)
 
 
 
-If you don't have an app, clone a simple open-source one and Dockerize it.
-**Answer**
 
 
 ---
@@ -29,7 +27,7 @@ If you don't have an app, clone a simple open-source one and Dockerize it.
 5. Add a `.dockerignore` file
 
 
- [app](docker-repo/Dockerfile)
+ [Dockerfile](python-food-app/Dockerfile)
 
 Build and test it locally.
 
@@ -45,7 +43,7 @@ Write a `docker-compose.yml` that includes:
 6. **Healthchecks** on the database
 
 
- [app](docker-repo/docker-compose.yml)
+ [Docker-compose File](python-food-app/docker-compose.yml)
 
 
 Run `docker compose up` and verify everything works together.
@@ -57,8 +55,12 @@ Run `docker compose up` and verify everything works together.
 2. Push it to Docker Hub
 3. Share the Docker Hub link
 
-https://hub.docker.com/repository/docker/dockerleena778/fooddeliveryapp/general
+https://hub.docker.com/repositories/dockerleena778
 
+
+ ![image](images/dockerhub-push.png)
+
+ ![image](images/dockerhub-tag.png)
 
 
 4. Write a `README.md` in your project with:
@@ -73,4 +75,18 @@ https://hub.docker.com/repository/docker/dockerleena778/fooddeliveryapp/general
 2. Pull from Docker Hub and run using only your compose file
 3. Does it work fresh? If not — fix it until it does
 
----
+
+ ![image](images/dockerhub-pull.png)
+
+
+**Application Assets**
+
+![image](images/1.2.png)
+
+![image](images/1.3.png)
+
+![image](images/1.4.png)
+
+![image](images/1.5.png)
+
+![image](images/1.6.png)

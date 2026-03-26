@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>{% block title %}SwiftBite – Order Delivery{% endblock %}</title>
+  <meta name="description" content="Order food from your favourite restaurants, delivered fast."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"/>
+  {% block head %}{% endblock %}
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="navbar">
+  <div class="nav-inner">
+    <a href="{{ url_for('main.index') }}" class="logo">
+      <span class="logo-icon">🚀</span>
+      <span class="logo-text">SwiftBite</span>
+    </a>
+    <div class="nav-links">
+      <a href="{{ url_for('main.index') }}" class="nav-link">Restaurants</a>
+      {% if current_user.is_authenticated %}
+        <a href="{{ url_for('orders.history') }}" class="nav-link">My Orders</a>
+        {% if current_user.is_admin %}
+          <a href="{{ url_for('admin.dashboard') }}" class="nav-link nav-admin">Admin</a>
+        {% endif %}
+        <div class="nav-user">
+          <span class="user-avatar">{{ current_user.name[0].upper() }}</span>
+          <span class="user-name">{{ current_user.name.split()[0] }}</span>
+          <div class="user-dropdown">
+            <a href="{{ url_for('orders.history') }}">📦 My Orders</a>
+            <a href="{{ url_for('auth.logout') }}">🚪 Log Out</a>
+          </div>
+        </div>
+      {% else %}
+        <a href="{{ url_for('auth.login') }}" class="nav-link">Login</a>
+        <a href="{{ url_for('auth.register') }}" class="btn-primary btn-sm">Sign Up</a>
+      {% endif %}
+    </div>
+  </div>
+</nav>
+
+<!-- Flash Messages -->
+<div class="flash-container">
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% for cat, msg in messages %}
+    <div class="flash flash-{{ cat }}" onclick="this.remove()">
+      <span>{{ msg }}</span>
+      <button class="flash-close">✕</button>
+    </div>
+    {% endfor %}
+  {% endwith %}
+</div>
+
+<!-- Main Content -->
+<main class="main-content">
+  {% block content %}{% endblock %}
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="logo-icon">🚀</span>
+      <span>SwiftBite</span>
+    </div>
+    <p>Fast, fresh, and delivered to your door.</p>
+    <p class="footer-copy">© 2026 SwiftBite. Built with Flask & ❤️</p>
+  </div>
+</footer>
+
+<!-- Cart Sidebar -->
+<div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+<div class="cart-sidebar" id="cartSidebar">
+  <div class="cart-header">
+    <h3>🛒 Your Order</h3>
+    <button onclick="toggleCart()" class="cart-close">✕</button>
+  </div>
+  <div class="cart-items" id="cartItems">
+    <div class="cart-empty" id="cartEmpty">
+      <span>🛒</span>
+      <p>Your cart is empty</p>
+    </div>
+  </div>
+  <div class="cart-footer" id="cartFooter" style="display:none">
+    <div class="cart-total">
+      <span>Subtotal</span>
+      <strong id="cartSubtotal">$0.00</strong>
+    </div>
+    <button class="btn-primary btn-full" onclick="submitOrder()">Place Order 🚀</button>
+  </div>
+</div>
+
+<!-- Cart FAB -->
+<button class="cart-fab" id="cartFab" onclick="toggleCart()" style="display:none">
+  🛒 <span id="cartCount">0</span> items · <span id="cartFabTotal">$0.00</span>
+</button>
+
+<script src="{{ url_for('static', filename='js/app.js') }}"></script>
+{% block scripts %}{% endblock %}
+</body>
+</html>

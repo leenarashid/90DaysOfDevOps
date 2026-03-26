@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% block title %}SwiftBite – Food Delivery{% endblock %}
+{% block content %}
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-content">
+    <h1 class="hero-title">Delivered <span class="gradient-text">Fast & Fresh</span></h1>
+    <p class="hero-sub">Order from your favourite restaurants and track your delivery in real-time.</p>
+    <form class="hero-search" method="GET" action="{{ url_for('main.index') }}">
+      <input type="text" name="search" value="{{ search }}" placeholder="Search restaurants or cuisines…" class="search-input"/>
+      <button type="submit" class="btn-primary">Search 🔍</button>
+    </form>
+  </div>
+  <div class="hero-bg"></div>
+</section>
+
+<!-- Filters -->
+<section class="container">
+  <div class="filters">
+    <a href="{{ url_for('main.index') }}" class="filter-chip {% if not cuisine_filter %}active{% endif %}">All</a>
+    {% for c in cuisines %}
+    <a href="{{ url_for('main.index', cuisine=c) }}" class="filter-chip {% if cuisine_filter == c %}active{% endif %}">
+      {{ c }}
+    </a>
+    {% endfor %}
+  </div>
+
+  <!-- Restaurant Grid -->
+  {% if restaurants %}
+  <div class="section-header">
+    <h2 class="section-title">
+      {% if search %}Results for "{{ search }}"{% elif cuisine_filter %}{{ cuisine_filter }} Restaurants{% else %}All Restaurants{% endif %}
+    </h2>
+    <span class="section-count">{{ restaurants|length }} place{% if restaurants|length != 1 %}s{% endif %}</span>
+  </div>
+  <div class="restaurant-grid">
+    {% for r in restaurants %}
+    <a href="{{ url_for('main.restaurant_detail', restaurant_id=r.id) }}" class="restaurant-card">
+      <div class="card-image">
+        <img src="{{ r.image_url }}" alt="{{ r.name }}" loading="lazy"/>
+        <div class="card-badge">{{ r.cuisine }}</div>
+      </div>
+      <div class="card-body">
+        <h3 class="card-name">{{ r.name }}</h3>
+        <p class="card-desc">{{ r.description[:80] }}…</p>
+        <div class="card-meta">
+          <span class="meta-rating">⭐ {{ r.rating }}</span>
+          <span class="meta-time">⏱ {{ r.delivery_time }}</span>
+          <span class="meta-fee">🚚 ${{ '%.2f'|format(r.delivery_fee) }}</span>
+        </div>
+        <div class="card-footer">
+          <span class="min-order">Min. ${{ '%.2f'|format(r.min_order) }}</span>
+          <span class="order-btn">Order Now →</span>
+        </div>
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+  {% else %}
+  <div class="empty-state">
+    <div class="empty-icon">🍽️</div>
+    <h3>No restaurants found</h3>
+    <p>Try a different search or filter.</p>
+    <a href="{{ url_for('main.index') }}" class="btn-primary">Clear Filters</a>
+  </div>
+  {% endif %}
+
+  <!-- Features -->
+  <section class="features">
+    <div class="feature-card">
+      <div class="feature-icon">⚡</div>
+      <h4>Lightning Fast</h4>
+      <p>Average delivery in under 35 minutes</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📍</div>
+      <h4>Live Tracking</h4>
+      <p>Track your order every step of the way</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🛡️</div>
+      <h4>Safe & Secure</h4>
+      <p>Contactless delivery guaranteed</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">💳</div>
+      <h4>Easy Payment</h4>
+      <p>Pay online or cash on delivery</p>
+    </div>
+  </section>
+</section>
+{% endblock %}

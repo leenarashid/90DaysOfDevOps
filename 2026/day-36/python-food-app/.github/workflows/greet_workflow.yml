@@ -1,0 +1,28 @@
+name: Greet Workflow
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  greet-job:
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout the repository code so the relative path to the action works
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Use the local composite action
+      - name: Run setup-and-greet action
+        id: greet-step
+        uses: ./.github/actions/setup-and-greet
+        with:
+          name: 'SwiftBite Developer'
+          language: 'en'
+
+      # Verify the output from the composite action
+      - name: Check output
+        run: echo "Was greeted? ${{ steps.greet-step.outputs.greeted }}"

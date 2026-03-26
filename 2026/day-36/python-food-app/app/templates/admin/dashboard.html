@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% block title %}Admin Dashboard – SwiftBite{% endblock %}
+{% block content %}
+<div class="container">
+  <div class="admin-header">
+    <h1 class="page-title">Admin Dashboard</h1>
+    <div class="admin-nav">
+      <a href="{{ url_for('admin.dashboard') }}" class="admin-tab active">Dashboard</a>
+      <a href="{{ url_for('admin.orders') }}" class="admin-tab">Orders</a>
+      <a href="{{ url_for('admin.users') }}" class="admin-tab">Users</a>
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <div class="stats-grid">
+    <div class="stat-card stat-blue">
+      <div class="stat-value">{{ total_orders }}</div>
+      <div class="stat-label">Total Orders</div>
+      <div class="stat-icon-bg">📦</div>
+    </div>
+    <div class="stat-card stat-orange">
+      <div class="stat-value">{{ pending }}</div>
+      <div class="stat-label">Pending</div>
+      <div class="stat-icon-bg">⏳</div>
+    </div>
+    <div class="stat-card stat-green">
+      <div class="stat-value">{{ delivered }}</div>
+      <div class="stat-label">Delivered</div>
+      <div class="stat-icon-bg">✅</div>
+    </div>
+    <div class="stat-card stat-purple">
+      <div class="stat-value">${{ '%.2f'|format(revenue) }}</div>
+      <div class="stat-label">Revenue</div>
+      <div class="stat-icon-bg">💰</div>
+    </div>
+  </div>
+
+  <!-- Recent Orders -->
+  <div class="admin-section">
+    <h2>Recent Orders</h2>
+    <div class="admin-table-wrap">
+      <table class="admin-table">
+        <thead>
+          <tr><th>#</th><th>Customer</th><th>Restaurant</th><th>Total</th><th>Status</th><th>Date</th><th>Action</th></tr>
+        </thead>
+        <tbody>
+          {% for order in recent_orders %}
+          <tr>
+            <td>#{{ order.id }}</td>
+            <td>{{ order.customer.name }}</td>
+            <td>{{ order.restaurant.name }}</td>
+            <td>${{ '%.2f'|format(order.total_amount) }}</td>
+            <td><span class="status-pill status-{{ order.status.lower().replace(' ', '-') }}">{{ order.status }}</span></td>
+            <td>{{ order.created_at.strftime('%b %d, %H:%M') }}</td>
+            <td><a href="{{ url_for('orders.order_detail', order_id=order.id) }}" class="btn-sm btn-outline">View</a></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <a href="{{ url_for('admin.orders') }}" class="btn-outline" style="margin-top:1rem;display:inline-block">View All Orders →</a>
+  </div>
+</div>
+{% endblock %}
