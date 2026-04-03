@@ -20,14 +20,13 @@ terraform show
 
 - terraform state show aws_instance.<name>   
 
-
-<img src="images/1.3(tf-stata-instance).png" width="500">
+<img src="images/1.3(tf-state-instance).png" width="500">
        
 
 
 - terraform state show aws_vpc.<name>    
 
-<img src="images/1.1(tf-state-vpc).png" width="500">
+<img src="images/1.4(tf-state-vpc).png" width="500">
 
 
 
