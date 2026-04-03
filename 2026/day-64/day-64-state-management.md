@@ -88,21 +88,21 @@ terraform init
 ```
 Terraform will ask: "Do you want to copy existing state to the new backend?" -- say yes.
 
-<img src="images/2.1(cli).png).png" width="500">
+<img src="images/2.1(cli).png" width="700">
 
-<img src="images/2.1(console).png" width="500">
+<img src="images/2.1(console).png" width="700">
 4. Verify:
    - Check the S3 bucket -- you should see `dev/terraform.tfstate`
 
- <img src="images/2.2(s3-config).png" width="500">
+ <img src="images/2.2(s3-config).png" width="700">
 
 - Your local `terraform.tfstate` should now be empty or 
 
-<img src="images/2.2(t-init).png" width="500">
+<img src="images/2.2(t-init).png" width="700">
 
    - Run `terraform plan` -- it should show no changes (state migrated correctly)
 
-<img src="images/2.3(no-chnage-state).png" width="500">
+<img src="images/2.3(no-chnage-state).png" width="700">
 
 
 ---
@@ -131,7 +131,7 @@ terraform force-unlock <LOCK_ID>
 
 ```
 
-<img src="images/3.1.png" width="500">
+<img src="images/3.1.png" width="700">
 
 
 
@@ -148,7 +148,7 @@ terraform import aws_s3_bucket.imported terraweek-import-test-<yourname>
 
 ```
 
-<img src="images/4.1(import-command).png" width="500">
+<img src="images/4.1(import-command).png" width="700">
 
 
 4. Run `terraform plan`:
@@ -159,7 +159,7 @@ terraform import aws_s3_bucket.imported terraweek-import-test-<yourname>
 
 5. Run `terraform state list` -- the imported bucket should now appear alongside your other resources
 
-<img src="images/4.3.png" width="500">
+<img src="images/4.3.png" width="700">
 
 **Document:** What is the difference between `terraform import` and creating a resource from scratch?
 
@@ -177,7 +177,7 @@ terraform state mv aws_s3_bucket.imported aws_s3_bucket.logs_bucket
 Update your `.tf` file to match the new name. Run `terraform plan` -- it should show no changes.
 
 
-<img src="images/5.1(upto-mv).png" width="500">
+<img src="images/5.1(upto-mv).png" width="700">
 
 
 
@@ -192,9 +192,9 @@ terraform state rm aws_s3_bucket.logs_bucket
 Run `terraform plan` -- Terraform no longer knows about the bucket, but it still exists in AWS.
 
 
-<img src="images/5.2(no-change).png" width="500">
+<img src="images/5.2(no-change).png" width="700">
 
-<img src="images/5.3.png" width="500">
+<img src="images/5.3.png" width="700">
 
 - The bucket still exists, no change has been noticed.
 
