@@ -7,25 +7,25 @@
 ### Task 1: Inspect Your Current State
 Use your Day 63 config (or create a small config with a VPC and EC2 instance). Apply it and then explore the state:
 
-```bash
+bash
 terraform show  
 
 
 <img src="images/1.1(t.show).png" width="500">                                  
 
 
-terraform state list                              
+- terraform state list                              
 <img src="images/1.2(t.show.list).png" width="500">
 
-terraform state show aws_instance.<name>   
+- terraform state show aws_instance.<name>   
 
 <img src="images/1.3(tf-stata-instance).png" width="500">
        
-terraform state show aws_vpc.<name>    
+- terraform state show aws_vpc.<name>    
 
 <img src="images/1.1(tf-state-vpc).png" width="500">
 
-```
+
 
 
 
