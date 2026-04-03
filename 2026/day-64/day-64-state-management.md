@@ -155,7 +155,7 @@ terraform import aws_s3_bucket.imported terraweek-import-test-<yourname>
    - If you see "No changes" -- the import was perfect
    - If you see changes -- your config does not match reality. Update your config to match, then plan again until you get "No changes"
 
-<img src="images/4.2.png" width="500">
+<img src="images/4.2.png" width="700">
 
 5. Run `terraform state list` -- the imported bucket should now appear alongside your other resources
 
@@ -206,7 +206,7 @@ terraform import aws_s3_bucket.logs_bucket terraweek-import-test-<yourname>
 ```
 
 
-<img src="images/5.4.png" width="500">
+<img src="images/5.4.png" width="700">
 
 **Document:** When would you use `state mv` in a real project? When would you use `state rm`?
 `state mv` Use when you want to rename or move a resource WITHOUT recreating it
@@ -233,7 +233,7 @@ You should see a **diff** -- Terraform detects that reality no longer matches th
 5. Choose Option A -- apply and verify the tags are restored.
 
 
-<img src="images/6.1.png" width="500">
+<img src="images/6.1.png" width="700">
 
 
 6. Run `terraform plan` again -- it should show "No changes." Drift resolved.
@@ -241,14 +241,14 @@ You should see a **diff** -- Terraform detects that reality no longer matches th
 
 
 
-<img src="images/6.2.png" width="500">
+<img src="images/6.2.png" width="700">
 
 
 
 **Performing Option B:**
 
 
-<img src="images/6.2+.png" width="500">
+<img src="images/6.2+.png" width="700">
 
 **Document:** How do teams prevent state drift in production? (hint: restrict console access, use CI/CD for all changes)
 - State drift happens when the real infrastructure (AWS) is different from what Terraform expects (state file)
