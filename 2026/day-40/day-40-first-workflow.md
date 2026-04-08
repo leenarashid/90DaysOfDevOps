@@ -10,7 +10,7 @@
 - A public repositroy is made with name `tws_github_workflows`.Cloned locally and first `.yml file` is made with command `nano .github/workflows/heelo.yml`.A workflow is written and the changes are pushed to the  GitHub repository.
 
 
-<img src="Images/Task1.png" width="900">
+<img src="Images/Task1.png" width="600">
 
 <img src="Images/2-1.png" width="600">
 <img src="Images/2-2.png" width="600">
