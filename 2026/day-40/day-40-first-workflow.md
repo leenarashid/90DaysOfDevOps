@@ -12,8 +12,8 @@
 
 <img src="Images/Task1.png" width="900">
 
-<img src="Images/2-1.png" width="900">
-<img src="Images/2-2.png" width="900">
+<img src="Images/2-1.png" width="600">
+<img src="Images/2-2.png" width="600">
 
 ----
 #### Task 2: Hello Workflow
