@@ -1,0 +1,66 @@
+name: Set-Up And Greet
+description: A composite action that prints a greeting, system info, and sets an output
+
+inputs:
+  name:
+    description: Name of the person to greet
+    required: true
+    type: string
+  language:
+    description: Language you want
+    required: false
+    type: string
+    default: en
+
+outputs:
+  greeted:
+    description: Prints greet message
+    value: ${{ steps.greet.outputs.greeted}}
+runs:
+  using: composite
+  steps:
+    - name: Print Greetings
+      shell: bash
+      run: |
+        if [ "${{ inputs.language }}" = "en" ]; then
+          echo "HELLO! ${{ inputs.name }}"
+        else
+          echo "Enter desired language: ${{ inputs.language }}"
+        fi
+
+    - name: Print System Info
+      shell: bash
+      run: |
+        echo "Current date: $(date)" # donot put curly brackets
+        echo "Runner OS: $RUNNER_OS"
+
+    - name: Set Output
+      id: greet
+      shell: bash
+      run: |
+        echo "greeted=true" >> "$GITHUB_OUTPUT"
+
+------
+name: Use Setup and Greet
+on:
+  workflow_dispatch:
+  # push:
+  #   branches: [main]
+
+jobs:
+  greet-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run Setup and Greet
+        id: greet
+        uses: ./.github/actions/setup-and-greet
+        with:
+          name: "ABC"
+          language: "en"
+
+      - name: Print Action Output
+        run:  |
+            echo "Greeted value: ${{ steps.greet.outputs.greeted }}"        
