@@ -1,0 +1,19 @@
+name: Upload Artifacts
+on:
+  workflow_dispatch:
+jobs:
+  upload-artifact:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Code Checkout
+        uses: actions/checkout@v4
+      - name: Create Folder
+        run:  |
+            mkdir -p my-folder   #First a folder needs to be created
+            echo "This is the file created for artifact upload" > my-folder/output.txt
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: my-artifact-folder
+          path: my-folder/output.txt   #A zipped folder with file and its contents has been created.In ACTIONS 
+                                      #TAB the URL given downloads a copy of the folder.

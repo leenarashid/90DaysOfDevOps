@@ -1,0 +1,18 @@
+name: Secret Message
+on:
+ workflow_dispatch:
+jobs:
+  print-secret:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Created Secret
+        run: echo ${{secrets.MY_SECRET_MESSAGE}}
+      - name: Check Secret
+        run: |
+             echo "Checking Availablity"
+             if [ -z ${{secrets.MY_SECRET_MESSAGE}} ]; then
+               echo "No secret message"
+               fi
+      - name: Print Secret       
+        run: echo "My secret message is ${{secrets.MY_SECRET_MESSAGE}}"
+                

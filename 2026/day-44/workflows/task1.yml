@@ -1,0 +1,17 @@
+name: Docker Secrets
+on: 
+  workflow_dispatch:
+
+jobs:
+   Dockerhub-Login:
+     runs-on: ubuntu-latest
+     env:
+      DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+      DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_TOKEN }}
+     steps:
+      - name: Code Checkout
+        uses: actions/checkout@v4
+      - name: Dockerhub Credentials
+        run: |
+             echo "The Dockerhub username is:  ${{ secrets.DOCKERHUB_USERNAME }}"
+             echo "The Dockerhub password is:  ${{ secrets.DOCKERHUB_TOKEN }}"

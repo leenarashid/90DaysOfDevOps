@@ -1,0 +1,29 @@
+name: Cache Workflow
+on:
+  workflow_dispatch:
+jobs:
+  cache-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Code Checkout
+        uses: actions/checkout@v4
+      - name: Setting up Node
+        uses: actions/setup-node@v3
+        with: 
+          node-version: "18"
+      - name: Cache npm
+        uses: actions/cache@v3
+        with:
+         path: ~/.npm
+         key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
+         restore-keys: |
+           ${{ runner.os }}-node-
+      - name: Installing Dependencies
+        run: npm install
+      - name: Start Node.js app
+        run: |
+          echo "Starting app..."
+          node app.js &
+          sleep 5
+          curl http://localhost:3000/
+         
