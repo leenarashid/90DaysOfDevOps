@@ -1,0 +1,50 @@
+name: PR Check
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  file-size-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+           fetch-depth: 0   # fetch all history
+
+      - name: Ensure main exists locally
+        run: git fetch origin main:main
+
+      - name: Check File Size
+        run: |
+            for f in $(git diff --name-only main...HEAD); do
+            size=$(wc -c < "$f")
+             if [ "$size" -gt 1048576 ]; then
+               echo "File $f is too big ($size bytes)"
+              exit 1
+               fi
+             done
+
+  branch-name-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Read Branch Name
+        run: |
+          branch="${{ github.head_ref }}"
+          if [[ "$branch" != feature/* && "$branch" != fix/* && "$branch" != docs/* ]]; then
+            echo "Branch name '$branch' is invalid. Must start with feature/, fix/, or docs/"
+            exit 1
+          fi
+
+  pr-body-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Read PR Body
+        run: |
+          body="${{ github.event.pull_request.body }}"
+          if [ -z "$body" ]; then
+            echo "PR description is empty!"
+          else
+            echo "PR description is present."
+          fi
