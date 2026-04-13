@@ -1,0 +1,44 @@
+name: Scheduled Health Check
+
+on:
+  schedule:
+    - cron: '0 */12 * * *'
+  workflow_dispatch:
+
+jobs:
+  health-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Pull latest image
+        run:  docker pull ${{ secrets.DOCKER_USERNAME }}/myapp:latest || echo "Warning: Could not pull image, checking if it exists locally"
+
+      - name: Run container
+        run: |
+          docker run -d -p 8000:8000 --name test-app ${{ secrets.DOCKER_USERNAME }}/myapp:latest
+          echo "Container started. Waiting..."
+          sleep 5
+
+      - name: Health check
+        id: check
+        run: |
+          response=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:8000/health)
+          if [ "$response" -eq 200 ]; then
+            echo "Health check PASSED ($response)"
+            echo "status=PASSED" >> $GITHUB_ENV
+          else
+            echo "Health check FAILED ($response)"
+            echo "status=FAILED" >> $GITHUB_ENV
+            exit 1
+          fi
+
+      - name: Stop and remove container
+        if: always()
+        run: docker rm -f test-app
+
+      - name: Create Summary
+        if: always()
+        run: |
+          echo "## Health Check Report" >> $GITHUB_STEP_SUMMARY
+          echo "- Image: ${{ secrets.DOCKER_USERNAME }}/myapp:latest" >> $GITHUB_STEP_SUMMARY
+          echo "- Status: ${{ env.status }}" >> $GITHUB_STEP_SUMMARY
+          echo "- Time: $(date)" >> $GITHUB_STEP_SUMMARY

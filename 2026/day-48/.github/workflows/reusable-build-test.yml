@@ -1,0 +1,62 @@
+name: Reusable Build and Test
+
+on:
+  workflow_call:
+    inputs:
+      python_version:
+        required: false
+        type: string
+        default: "3.11"
+      run_tests:
+        required: false
+        type: boolean
+        default: true
+    outputs:
+      test_result:
+        description: "Result of the test step"
+        value: ${{ jobs.build-and-test.outputs.test_result }}
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    outputs:
+      test_result: ${{ steps.set-result.outputs.result }}
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+
+      - name: Set up Python ${{ inputs.python_version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ inputs.python_version }}
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Start Flask application
+        if: ${{ inputs.run_tests }}
+        run: |
+          python app.py &
+          sleep 3
+
+      - name: Run tests
+        id: run-tests
+        if: ${{ inputs.run_tests }}
+        run: |
+          if bash test.sh ; then
+            echo "TEST_PASSED=true" >> $GITHUB_ENV
+          else
+            echo "TEST_PASSED=false" >> $GITHUB_ENV
+            exit 1
+          fi
+
+      - name: Set test result output
+        id: set-result
+        run: |
+          if [[ "${{ env.TEST_PASSED }}" == "true" || "${{ inputs.run_tests }}" == "false" ]]; then
+            echo "result=passed" >> $GITHUB_OUTPUT
+          else
+            echo "result=failed" >> $GITHUB_OUTPUT
+          fi
