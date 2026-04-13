@@ -1,0 +1,27 @@
+name: Code Quality
+on:
+  workflow_call:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    strategy:
+        matrix:
+          node-version: [ "20", "18" ]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Linting
+        run: npx eslint .  # can also target specific files
+
+      - name: Security scan (SAST)
+        run: npm audit --audit-level=moderate

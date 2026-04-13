@@ -1,0 +1,56 @@
+name: Reusable — Docker Build & Push
+
+on:
+  workflow_call:
+    inputs:
+      image_name:
+        description: 'Docker image name (without registry prefix)'
+        type: string
+        required: true
+      tag:
+        description: 'Docker image tag'
+        type: string
+        required: true
+      docker_username:
+        description: 'Docker Hub username (used to form image URL)'
+        type: string
+        required: true
+    secrets:
+      docker_token:
+        required: true
+    outputs:
+      image_url:
+        description: 'Full Docker image URL: username/image:tag'
+        value: ${{ jobs.docker-build.outputs.image_url }}
+
+jobs:
+  docker-build:
+    runs-on: ubuntu-latest
+    outputs:
+      image_url: ${{ steps.set-image-url.outputs.image_url }}
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+      - name: Debug username
+        run: echo "Docker username is ${{ inputs.docker_username }}"
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ inputs.docker_username }}
+          password: ${{ secrets.docker_token }}
+
+      - name: Set Image URL Output
+        id: set-image-url
+        run: |
+          IMAGE_URL="${{ inputs.docker_username }}/${{ inputs.image_name }}:${{ inputs.tag }}"
+          echo "image_url=$IMAGE_URL" >> $GITHUB_OUTPUT
+          echo "Building and pushing: $IMAGE_URL"
+
+      - name: Build and Push Docker Image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          tags: ${{ steps.set-image-url.outputs.image_url }}
