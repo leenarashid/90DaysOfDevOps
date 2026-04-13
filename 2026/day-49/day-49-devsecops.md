@@ -68,10 +68,11 @@ Push and check the Actions tab. Read the scan output.
 
 
 #### Vulnerability & Secrets Report
+#### Vulnerability & Secrets Report
 
 | Target                                               | Type     | Vulnerabilities | Secrets |
 |-----------------------------------------------------|---------|----------------|---------|
-| sanketdangat11/node-app:sha-4d951ac (debian 12.13) | debian  | 0              | -       |
+| dockerleena778/node-app:sha-4d951ac (debian 12.13) | debian  | 0              | -       |
 | app/node_modules/@isaacs/cliui/package.json         | node-pkg| 0              | -       |
 | app/node_modules/@isaacs/fs-minipass/package.json   | node-pkg| 0              | -       |
 | app/node_modules/accepts/package.json               | node-pkg| 0              | -       |
@@ -155,8 +156,12 @@ Push and check the Actions tab. Read the scan output.
 | app/node_modules/tar/package.json                  | node-pkg| 0              | -       |
 | app/node_modules/toidentifier/package.json         | node-pkg| 0              | -       |
 | app/node_modules/type-is/package.json              | node-pkg| 0              | -       |
+| app/node_modules/unpipe/package.json               | node-pkg| 0              | -       |
+| app/node_modules/vary/package.json                 | node-pkg| 0              | -       |
+| app/node_modules/which/package.json                | node-pkg| 0              | -       |
+| app/node_modules/wrappy/package.json               | node-pkg| 0              | -       |
+| app/node_modules/yallist/package.json              | node-pkg| 0              | -       |
 
----
 
 ### Task 2: Enable GitHub's Built-in Secret Scanning
 GitHub can automatically detect if someone pushes a secret (API key, token, password) to your repo.
@@ -210,7 +215,7 @@ Test it:
 
 - Yes 
 
-  ![PR Check](images/pr-check.png)
+  ![PR Check](pr-check.png)
 
 ---
 
