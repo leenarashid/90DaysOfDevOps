@@ -71,7 +71,7 @@ Push and check the Actions tab. Read the scan output.
 
 | Target                                               | Type     | Vulnerabilities | Secrets |
 |-----------------------------------------------------|---------|----------------|---------|
-| sanketdangat11/node-app:sha-4d951ac (debian 12.13) | debian  | 0              | -       |
+
 | app/node_modules/@isaacs/cliui/package.json         | node-pkg| 0              | -       |
 | app/node_modules/@isaacs/fs-minipass/package.json   | node-pkg| 0              | -       |
 | app/node_modules/accepts/package.json               | node-pkg| 0              | -       |
