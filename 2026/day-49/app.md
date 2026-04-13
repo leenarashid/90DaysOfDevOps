@@ -210,7 +210,7 @@ Test it:
 
 - Yes 
 
-  ![PR Check](images/pr-check.png)
+  ![PR Check](pr-check.png)
 
 ---
 
