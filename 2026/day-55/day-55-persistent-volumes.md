@@ -113,9 +113,7 @@ Access modes to know:
 
 `Why:` It was manually created and had a Reclaim Policy = Retain, so Kubernetes keeps the PV even after the PVC is deleted to prevent accidental data loss.
 
-![image](images/task7.png)
 
-![image](images/task7.2.png)
 
 ---
 
