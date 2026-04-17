@@ -299,7 +299,7 @@ Only the built-in `kubernetes` service in the default namespace should remain.
 
 Yes, everything has been cleaned up.
 
-![image](assets/6.png) 
+![image](assets/7.png) 
 
 
 ---
