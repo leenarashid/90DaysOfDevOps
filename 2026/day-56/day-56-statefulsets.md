@@ -97,7 +97,7 @@ Yes, exactly the same.
 The new pod reconnected to the same PVC.
 
 
-![image](assets/task5.png)
+![image](images/task5.png)
 
 **Verify:** Is the data identical after pod recreation?
 **Answer**
