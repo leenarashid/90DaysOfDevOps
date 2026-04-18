@@ -63,7 +63,7 @@ Observe ordered creation — `web-0` first, then `web-1` after `web-0` is Ready,
 
 Check the PVCs: `kubectl get pvc` — you should see `web-data-web-0`, `web-data-web-1`, `web-data-web-2` (names follow the pattern `<template-name>-<pod-name>`).
 
-![image](images/task3.png.png)
+![image](images/task3.png)
 
 
 **Verify:** What are the exact pod names and PVC names?
@@ -97,7 +97,7 @@ Yes, exactly the same.
 The new pod reconnected to the same PVC.
 
 
-![image](assets/task5.png)
+![image](images/task5.png)
 
 **Verify:** Is the data identical after pod recreation?
 **Answer**
