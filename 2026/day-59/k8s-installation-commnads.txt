@@ -1,0 +1,7 @@
+$ helm repo add bitnami https://charts.bitnami.com/bitnami
+$ helm search repo bitnami
+$ helm install my-release bitnami/<chart>
+helm install my-mongodb bitnami/mongodb
+helm install my-nginx bitnami/nginx --namespace nginx --create-namespace
+ kubectl get pods -n nginx  -o wide
+helm install nginx-file bitnami/nginx -f custom-values.yaml #for my yml file
