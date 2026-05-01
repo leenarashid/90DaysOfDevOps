@@ -1,0 +1,17 @@
+a data source is a read-only configuration block used to fetch information from external systems 
+or existing infrastructure.
+###IMP##Use of AWS System Manager Parameter Store
+data "aws_ssm_parameter" "ubuntu_ami" {
+  name = "/aws/service/canonical/ubuntu/server/22.04/stable/current/amd64/hvm/ebs-gp2/ami-id"
+  }
+  and use it like #####
+  resource "aws_instance" "my_instance" {
+  ami           = data.aws_ssm_parameter.ubuntu_ami.value
+  instance_type = "t3.micro"
+}
+####Benefits###
+SSM advantages:
+always correct
+no filters needed
+works in every region
+used in production pipelines
