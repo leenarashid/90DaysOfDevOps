@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+   name: wdpress-dep
+spec: 
+   replicas: 2
+   selector:
+     matchLabels:
+         app: wordpress
+   template:
+     metadata:
+         labels:
+            app: wordpress
+     spec:
+        containers:
+           - name: wdpress-ctr
+             image: wordpress:latest 
+             ports:
+                - containerPort: 80
+             envFrom:
+              -  configMapRef:
+                   name: mysql-cm
+             env:    
+               - name: WORDPRESS_DB_USER
+                 valueFrom:
+                   secretKeyRef:
+                        name: mysql-secrets
+                        key: MYSQL_USER
+               - name: WORDPRESS_DB_PASSWORD      
+                 valueFrom:
+                   secretKeyRef:
+                       name: mysql-secrets
+                       key:  MYSQL_PASSWORD
+             resources:
+                requests: 
+                  cpu: 100m
+                  memory: 100Mi
+                limits:
+                  cpu: 500m
+                  memory:   500Mi  
+             livenessProbe:
+                 httpGet:
+                   path: /wp-login.php 
+                   port: 80
+                 initialDelaySeconds: 15
+                 periodSeconds: 10
+             readinessProbe:
+                 httpGet:
+                   path: /wp-login.php 
+                   port: 80
+                 initialDelaySeconds: 5
+                 periodSeconds: 5   
