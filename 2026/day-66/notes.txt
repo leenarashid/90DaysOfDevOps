@@ -1,0 +1,4 @@
+terraform plan
+terraform plan -out=tfplan
+terraform show tfplan
+ terraform show tfplan | grep "module.eks"
