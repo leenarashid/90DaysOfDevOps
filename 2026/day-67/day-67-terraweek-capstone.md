@@ -302,7 +302,7 @@ Go to the AWS console and verify:
 
 **Outputs**
 
-![ouputs](images/outputs.png)
+![Outputs](images/ouputs.png)
 
 
 **Verify:** Are all three environments completely isolated from each other?
