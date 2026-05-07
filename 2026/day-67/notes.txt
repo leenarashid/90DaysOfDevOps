@@ -1,0 +1,3 @@
+Root → passes AZ → VPC subnet uses it
+EC2 → derives AZ from instance
+Since tags already contain instance name so we donot need to declare them separately.
