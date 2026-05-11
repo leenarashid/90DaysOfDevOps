@@ -329,6 +329,8 @@ ansible all -m ping
 **Answer**
 
 Yes with the ansible.cfg file I was able to ping all the servers.
+
+
 ---
 
 - Difference between `command` and `shell` modules
