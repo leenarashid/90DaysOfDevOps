@@ -1,0 +1,73 @@
+---
+- name: Configure all servers
+  hosts: web
+  become: yes
+
+  tasks:
+
+     - name: Install multiple packages on Amazon Linux
+       yum:
+         name:
+           - git
+             #- curl , amazon linux already has curl,this currl will conflict and result in error
+           - wget
+           - tree
+         state: present
+       when: ansible_os_family == "RedHat"    
+     - name: Install multiple packages on Ubuntu
+       apt:
+         name:
+           - git
+           - curl 
+           - wget
+           - tree
+         state: present
+       when: ansible_os_family == "Debian"    
+     - name: Ensure Nginx is running
+       service:
+         name: nginx
+         state: started
+         enabled: true 
+     - name: Copy config file
+       copy:
+         src: files/app.conf
+         dest: /etc/app.conf
+         owner: root
+         group: root
+         mode: '0644'
+     - name: Create application directory for "Amazon Linux"
+       file:
+         path: /opt/myapp
+         state: directory
+         owner: ec2-user
+         mode: '0755'
+       when: ansible_os_family == "RedHat"
+     - name: Create application directory for "Ubuntu"
+       file:
+         path: /opt/myapp
+         state: directory
+         owner: ubuntu
+         mode: '0755'
+       when: ansible_os_family == "Debian"
+
+
+     - name: Check disk space
+       command: df -h
+       register: disk_output
+
+     - name: Print disk space
+       debug:
+         var: disk_output.stdout_lines
+
+     - name: Count running processes
+       shell: ps aux | wc -l
+       register: process_count
+
+     - name: Show process count
+       debug:
+          msg: "Total processes: {{ process_count.stdout }}"
+     - name: Set timezone in environment
+       lineinfile:
+         path: /etc/environment
+         line: 'TZ=Asia/Kolkata'
+         create: true      

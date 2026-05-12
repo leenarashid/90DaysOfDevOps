@@ -1,0 +1,72 @@
+---
+- name: Configure web servers
+  hosts: web
+  become: true
+  tasks:
+    - name: Install Nginx on Amazon
+      yum:
+        name: nginx
+        state: present
+      when: ansible_os_family == "RedHat"
+    
+    - name: Install Nginx on Ubuntu
+      apt:
+        name: nginx
+        state: present
+        update_cache: "yes"  
+      when: ansible_os_family == "Debian"    
+    - name: Start Nginx
+      service:
+        name: nginx
+        state: started
+        enabled: true
+    
+
+
+
+- name: Configure app servers
+  hosts: web
+  become: true
+  tasks:
+    - name: Install Node.js dependencies on Amazon
+      yum:
+        name:
+          - gcc
+          - make
+        state: present
+      when: ansible_os_family == "RedHat"
+    - name: Install Node.js dependencies on Ubuntu
+      apt:
+        name:
+          - gcc
+          - make
+        state: present
+      when: ansible_os_family == "Debian"
+          
+    - name: Create app directory
+      file:
+        path: /opt/app
+        state: directory
+        mode: '0755'
+
+- name: Configure database servers
+  hosts: db
+  become: true
+  tasks:
+    - name: Install Mariadb on Amazon
+      yum:
+        name: mariadb105-server
+        state: present
+    - name: Start the service
+      service:
+        name: mariadb
+        state: started
+    - name: Enable the service
+      service: 
+        name: mariadb
+        enabled: yes      
+    - name: Create data directory
+      file:
+        path: /var/lib/appdata
+        state: directory
+        mode: '0700'

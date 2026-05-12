@@ -1,0 +1,67 @@
+---
+- name: Configure Nginx with a custom config
+  hosts: web
+  become: true
+
+  tasks:
+    - name: Install Nginx on Amazon Linux
+      yum:
+        name: nginx
+        state: present 
+      when: ansible_os_family == "RedHat"
+
+    - name: Install Nginx on Ubuntu
+      apt:
+        name: nginx
+        state: present
+        update_cache: yes  
+      when: ansible_os_family == "Debian"
+
+    - name: Deploy Nginx config
+      copy:
+        src: files/nginx.conf
+        dest: /etc/nginx/nginx.conf
+        owner: root
+        mode: '0644'
+      notify: Restart Nginx
+    - name: Remove default nginx page on Ubuntu
+      file:
+        path: /var/www/html/index.nginx-debian.html
+        state: absent
+      when: ansible_os_family == "Debian"
+
+
+    - name: Create web directory on Ubuntu   #Added block of code
+      file:
+        path: /var/www/html
+        state: directory
+      when: ansible_os_family == "Debian"
+
+    - name: Deploy custom index page on Amazon Linux
+      copy:
+        content: "<h1>Managed by Ansible on Amazon Linux Server</h1><p>Server: {{ inventory_hostname }}</p>"
+        dest: /usr/share/nginx/html/index.html
+      when: ansible_os_family == "RedHat"
+      
+    - name: Deploy custom index page on Ubuntu  #TO DO ?????
+      copy:
+        content: "<h1>Managed by Ansible on Ubuntu Server</h1><p>Server: {{ inventory_hostname }}</p>"
+        dest: /var/www/html/index.html
+        force: yes #added line of code
+      when: ansible_os_family == "Debian"
+      notify: Restart Nginx  #added line of code
+
+    - name: Ensure Nginx is running
+      service:
+        name: nginx
+        state: started
+        enabled: true
+
+  handlers:
+    - name: Restart Nginx
+      debug:
+        msg: "Restarting Nginx now"
+    - name: Restart Nginx Actual Service
+      service:
+        name: nginx
+        state: restarted
