@@ -1,0 +1,5 @@
+What I could not do..Could not load new index.html on Ubuntu in nginx-config.yml
+For ubuntu a "Create" block must be added to ensure the index.html page
+update_cache: yes -> is like sudo apt-get update
+To check the status of the running service *** ansible db -m shell -a "systemctl status mariadb"
+***SHELL COMMANDS****  ansible web -m shell -a "<gcc/make> --version"  
