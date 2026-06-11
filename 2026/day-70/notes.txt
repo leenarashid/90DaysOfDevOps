@@ -1,0 +1,8 @@
+1) First of all key (pub and private) were created in my "terraform folder", then I created "keys"
+folder cp both the keys there then ssh control node with  ssh -i ~/Desktop/Ansible-folder/keys/ansible-key ubuntu@ec2-44-242-202-140.us-west-2.compute.amazonaws.com 
+1)$ scp -i ~/Desktop/Ansible-folder/keys/ansible-key \
+~/Desktop/Ansible-folder/keys/ansible-key \---> used this to copy "only private key" from local to my control node.
+3)Now from control node after copying th eprivate key I can ssh to worker nodes.
+4)Now since with scp command I have copied to ~ directory of control node, nect worker node ssh would be
+ssh -i /home/ubuntu/ansible-key ubuntu@ec2-------
+5)Got error with ansible_host_key_checking ...the correct one is host_key_checking 
