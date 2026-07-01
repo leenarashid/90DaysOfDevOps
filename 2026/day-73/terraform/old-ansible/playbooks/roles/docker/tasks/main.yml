@@ -1,0 +1,36 @@
+#SPDX-License-Identifier: MIT-0
+---
+# tasks file for role/docker
+- name: Update System
+  ansible.builtin.apt:
+     name: "*"
+     state: latest
+
+- name: Install Docker.io
+  ansible.builtin.apt:
+      name: docker.io
+      state: latest
+
+- name: Add User To Docker Group
+  ansible.builtin.user:
+     name: "{{ item }}"
+     group: docker
+     append: true
+     
+  loop: "{{ docker_users }}"
+
+#FROM HERE THE REFRESH/RESTART SHOULD BE IN HANDLERS
+
+- name: Register Docker Version
+  command: docker --version
+  register: docker_version
+
+- name: Show Docker Version  
+  debug:
+     msg: "{{ docker_version }}"
+
+
+
+
+
+

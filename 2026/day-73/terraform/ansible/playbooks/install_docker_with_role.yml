@@ -1,0 +1,6 @@
+- name: Install Docker On Observability Server
+  hosts: servers
+  become: yes
+  roles:
+     - docker
+

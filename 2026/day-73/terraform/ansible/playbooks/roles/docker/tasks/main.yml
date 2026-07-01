@@ -1,0 +1,50 @@
+#SPDX-License-Identifier: MIT-0
+---
+# tasks file for role/docker
+- name: Update System
+  apt:
+     name: "*"
+     state: latest
+
+- name: Install Docker.io
+  apt:
+      name: docker.io
+      state: latest
+
+- name: Add User To Docker Group
+  user:
+     name: "{{ item }}"
+     group: docker
+     append: true
+     
+  loop: "{{ docker_users }}"
+
+#FROM HERE THE REFRESH/RESTART SHOULD BE IN HANDLERS
+
+- name: Register Docker Version
+  command: docker --version
+  register: docker_version
+
+- name: Show Docker Version  
+  debug:
+     msg: "{{ docker_version }}"
+
+
+
+#DOCKER COMPOSE
+- name: Install Docker Compose
+  become: yes
+  apt:
+    name: docker-compose-v2
+    state: present
+    update_cache: yes
+
+- name: Register Docker Compose
+  command: docker compose version
+  register: compose_version
+
+- name: Show Dcoker Compose Version
+  debug:
+     msg: " {{ compose_version }} "
+
+
