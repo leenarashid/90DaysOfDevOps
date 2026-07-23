@@ -1,0 +1,46 @@
+#SPDX-License-Identifier: MIT-0
+---
+# tasks file for roles/docker
+- name : Update System
+  apt:
+    name: "*"
+    state: present
+ 
+- name: Install Docker.io 
+  apt:
+    name: "docker.io"
+    state: present
+  
+- name: Add User To Docker Group
+  user:
+    name: "{{ item }}"
+    group: docker
+    append: true
+  loop: "{{ docker_users }}"  #no spaces b/w quites and {}  
+
+- name: Verify Docker Installation
+  command: docker --version
+  register:  docker_version  #no quotes!!
+  
+- name: Show Version
+  debug:
+    msg: "{{docker_version}}"
+
+
+- name: Install Docker Compose Package
+  become: yes
+  apt:
+    name: docker-compose-v2
+    state: present
+  #  update_cache: yes
+
+- name: Register Docker Compose
+  command: docker compose version
+  register: compose_version
+
+- name: Show Docker Compose Version
+  debug:
+     msg: "{{ compose_version }}"
+
+
+
