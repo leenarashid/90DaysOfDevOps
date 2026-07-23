@@ -40,3 +40,5 @@ crash.log
 .pytest_cache/
 coverage/
 CLAUDE.md
+# Django generated static files
+**/staticfiles/

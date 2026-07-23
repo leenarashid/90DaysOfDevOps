@@ -1,0 +1,108 @@
+services:
+   notes-app:
+     build: 
+       context: "./notes-app"
+       dockerfile: Dockerfile
+     container_name: notes-app-ctr
+     ports:
+       - "8000:8000"
+     networks:
+       - monitoring
+
+   prometheus:
+     image: prom/prometheus:latest
+     container_name: prometheus-ctr
+     volumes:
+        - ./prometheus.yml:/etc/prometheus/prometheus.yml
+        - prometheus-data:/prometheus
+     command:
+        - '--config.file=/etc/prometheus/prometheus.yml'
+        - '--storage.tsdb.path=/prometheus'  
+     ports:
+        - "9090:9090"
+     networks:
+        - monitoring  
+
+     restart: unless-stopped
+
+   cadvisor:
+     image: gcr.io/cadvisor/cadvisor:latest
+     container_name: cadvisor-ctr
+     volumes:
+        - /:/rootfs:ro
+        - /var/run:/var/run:ro
+        - /sys:/sys:ro
+        - /var/lib/docker/:/var/lib/docker:ro
+        - /dev/disk/:/dev/disk:ro
+     ports:
+        - "8080:8080" 
+     networks:
+        - monitoring 
+   node-exporter:
+     image: prom/node-exporter:latest
+     container_name: node-exporter-ctr
+     volumes:
+       - /proc:/host/proc:ro
+       - /sys:/host/sys:ro
+       - /:/rootfs:ro
+     command:
+       - '--path.procfs=/host/proc'
+       - '--path.rootfs=/rootfs'
+       - '--path.sysfs=/host/sys'
+       - '--collector.filesystem.mount-points-exclude=^/(sys|proc|dev|host|etc)($$|/)'     
+
+     expose:
+       - "9100"
+     networks:
+       - monitoring
+     restart: unless-stopped
+
+   grafana:
+     image: grafana/grafana-enterprise
+     container_name: grafana-ctr
+     environment:
+       - GF_SECURITY_ADMIN_USER=admin
+       - GF_SECURITY_ADMIN_PASSWORD=admin123
+     ports:
+       - '3000:3000'
+     volumes:
+       - 'grafana_storage:/var/lib/grafana' 
+     networks:
+       - monitoring  
+   loki:
+     image: grafana/loki:latest
+     container_name: loki-ctr
+     ports:
+       - "3100:3100"
+     volumes:
+       - ./loki/loki-config.yml:/etc/loki/loki-config.yml
+       - loki_data:/loki
+     command: 
+       - '-config.file=/etc/loki/loki-config.yml'
+     restart: unless-stopped    
+     networks:
+       - monitoring
+   promtail:
+     image: grafana/promtail:latest
+     container_name: promtail-ctr
+     volumes:
+       - ./promtail/promtail-config.yml:/etc/promtail/promtail-config.yml
+       - /var/lib/docker/containers:/var/lib/docker/containers:ro
+       - /var/run/docker.sock:/var/run/docker.sock
+     command: 
+       - '-config.file=/etc/promtail/promtail-config.yml'
+     depends_on:
+       - loki
+     restart: unless-stopped
+     networks:
+       - monitoring
+     ports:
+       -  "9080:9080"
+
+volumes:
+  prometheus-data: {}  
+  grafana_storage: {}
+  loki_data: {}
+
+networks:
+  monitoring:  
