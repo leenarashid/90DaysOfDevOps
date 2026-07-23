@@ -1,0 +1,477 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="100%" height="100%" style="background-color: #ffffff; font-family: 'Inter', system-ui, -apple-system, sans-serif;">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap');
+      .title { font-weight: 700; fill: #0f172a; font-size: 36px; text-anchor: middle; }
+      .subtitle { font-weight: 500; fill: #64748b; font-size: 20px; text-anchor: middle; }
+      .compose-bg { fill: #f8fafc; stroke: #94a3b8; stroke-width: 2.5; stroke-dasharray: 8 6; rx: 16px; ry: 16px; }
+      .compose-label { font-weight: 700; font-size: 14px; fill: #475569; letter-spacing: 0.1em; }
+      .compose-sublabel { font-size: 11px; fill: #64748b; font-weight: 500; }
+      .card { fill: #ffffff; stroke: #e2e8f0; stroke-width: 1.5; rx: 12px; ry: 12px; }
+      .card-header-bg { rx: 11px; ry: 11px; }
+      .card-title { font-weight: 700; font-size: 16px; fill: #0f172a; }
+      .card-subtitle { font-size: 12px; font-weight: 600; fill: #64748b; }
+      .card-divider { stroke: #f1f5f9; stroke-width: 1.5; }
+      .card-detail { font-size: 12px; fill: #334155; font-weight: 400; }
+      .flow-label { font-size: 11px; font-weight: 700; text-anchor: middle; }
+      .flow-label-bg { rx: 4px; ry: 4px; filter: drop-shadow(0 1px 2px rgba(15, 23, 42, 0.05)); }
+      .arrow { fill: none; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+      .arrow-blue { stroke: #3b82f6; }
+      .arrow-orange { stroke: #f97316; }
+      .arrow-purple { stroke: #8b5cf6; }
+      .arrow-green { stroke: #10b981; }
+      .arrow-dashed { stroke-dasharray: 6 4; }
+      .legend-title { font-weight: 700; font-size: 14px; fill: #1e293b; }
+      .legend-text { font-size: 12px; fill: #475569; font-weight: 600; }
+      
+      /* Gradients for Logo Backgrounds */
+      .grad-docker { fill: url(#docker-g); }
+      .grad-prom { fill: url(#prom-g); }
+      .grad-grafana { fill: url(#grafana-g); }
+      .grad-loki { fill: url(#loki-g); }
+      .grad-otel { fill: url(#otel-g); }
+      .grad-host { fill: url(#host-g); }
+      .grad-cadvisor { fill: url(#cadvisor-g); }
+      .grad-app { fill: url(#app-g); }
+      .grad-user { fill: url(#user-g); }
+    </style>
+    
+    <!-- Drop Shadow Filters -->
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="112%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#0f172a" flood-opacity="0.08"/>
+    </filter>
+    
+    <!-- Gradients -->
+    <linearGradient id="docker-g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0db7ed" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#0991c2" stop-opacity="0.02"/>
+    </linearGradient>
+    <linearGradient id="prom-g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e6522c" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#ec7423" stop-opacity="0.02"/>
+    </linearGradient>
+    <linearGradient id="grafana-g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f47b20" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#f89f1a" stop-opacity="0.02"/>
+    </linearGradient>
+    <linearGradient id="loki-g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f97316" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#ea580c" stop-opacity="0.02"/>
+    </linearGradient>
+    <linearGradient id="otel-g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0052cc" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#00a3bf" stop-opacity="0.02"/>
+    </linearGradient>
+    <linearGradient id="host-g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#1d4ed8" stop-opacity="0.02"/>
+    </linearGradient>
+    <linearGradient id="cadvisor-g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0284c7" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#0369a1" stop-opacity="0.02"/>
+    </linearGradient>
+    <linearGradient id="app-g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#64748b" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#475569" stop-opacity="0.02"/>
+    </linearGradient>
+    <linearGradient id="user-g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#10b981" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#047857" stop-opacity="0.02"/>
+    </linearGradient>
+    
+    <!-- Flow-label-specific background shadows -->
+    <filter id="label-shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="1" stdDeviation="2" flood-color="#0f172a" flood-opacity="0.05"/>
+    </filter>
+
+    <!-- Arrow Markers -->
+    <marker id="arrow-blue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#3b82f6"/>
+    </marker>
+    <marker id="arrow-orange" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#f97316"/>
+    </marker>
+    <marker id="arrow-purple" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#8b5cf6"/>
+    </marker>
+    <marker id="arrow-green" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#10b981"/>
+    </marker>
+  </defs>
+
+  <!-- Title & Subtitle -->
+  <text x="960" y="65" class="title">Cloud Native Observability Stack Architecture</text>
+  <text x="960" y="105" class="subtitle">Docker Compose + Prometheus + Grafana + Loki + OpenTelemetry + Tempo</text>
+
+  <!-- DOCKER COMPOSE BOUNDARY -->
+  <g transform="translate(80, 180)">
+    <rect width="1760" height="830" class="compose-bg"/>
+    
+    <!-- Docker Compose Title Block -->
+    <g transform="translate(30, 24)">
+      <!-- Docker Logo -->
+      <g transform="translate(0, 2) scale(0.065)">
+        <path d="M296 226h42v42h-42zm-58 0h42v42h-42zm-58 0h42v42H180zm-58 0h42v42h-42zm116-58h42v42h-42zm-58 0h42v42h-42zm-58 0h42v42H180zm116-58h42v42h-42zm58 0h42v42h-42zM43.7 274.6c-.3 1.9-.4 3.8-.4 5.7 0 71.9 58.3 130.2 130.2 130.2h161.4c64.5 0 117.4-52.9 117.4-117.4v-11.4c0-7.2-4.1-13.8-10.7-16.9-38.3-17.7-65.7-53.7-72.1-95.2-.8-5.3-5.4-9.2-10.8-9.2H236v46.1h-44.1V253H140v-45.7H96.1V253H52v-46.1C23.6 207 0 231.2 0 260.6c0 5 1.5 9.8 4.2 14.1 6.5 10.3 19.3 16.5 31.7 16.5h7.8z" fill="#0db7ed"/>
+      </g>
+      <text x="40" y="20" class="compose-label">DOCKER COMPOSE OBSERVABILITY STACK</text>
+      <text x="40" y="36" class="compose-sublabel">Bridge Network: internal • Auto-Discovering and Scraping Active Containers</text>
+    </g>
+  </g>
+
+  <!-- ==================== FLOW ARROWS & LABELS ==================== -->
+  
+  <!-- 1. Client / User Flow (Green) -->
+  <path d="M 280 125 L 280 250" class="arrow arrow-green" marker-end="url(#arrow-green)"/>
+  <g filter="url(#label-shadow)">
+    <rect x="180" y="170" width="200" height="24" class="flow-label-bg" fill="#e6f4ea"/>
+    <text x="280" y="186" class="flow-label" fill="#137333">HTTP Client Requests (Port 8000)</text>
+  </g>
+
+  <!-- 2. notes-app -> Promtail (Logs - Orange) -->
+  <path d="M 410 310 L 510 310" class="arrow arrow-orange" marker-end="url(#arrow-orange)"/>
+  <g filter="url(#label-shadow)">
+    <rect x="420" y="298" width="80" height="20" class="flow-label-bg" fill="#ffe8d6"/>
+    <text x="460" y="312" class="flow-label" fill="#a63e00">JSON Logs</text>
+  </g>
+
+  <!-- 3. notes-app -> OTel Collector (Traces - Purple) -->
+  <path d="M 410 380 L 465 380 L 465 575 L 510 575" class="arrow arrow-purple" marker-end="url(#arrow-purple)"/>
+  <g filter="url(#label-shadow)">
+    <rect x="425" y="465" width="80" height="20" class="flow-label-bg" fill="#f3e8ff"/>
+    <text x="465" y="479" class="flow-label" fill="#6b21a8">OTLP Traces</text>
+  </g>
+
+  <!-- 4. Promtail -> Loki (Logs - Orange) -->
+  <path d="M 780 335 L 940 335" class="arrow arrow-orange" marker-end="url(#arrow-orange)"/>
+  <g filter="url(#label-shadow)">
+    <rect x="805" y="323" width="120" height="20" class="flow-label-bg" fill="#ffe8d6"/>
+    <text x="865" y="337" class="flow-label" fill="#a63e00">Push Logs (HTTP)</text>
+  </g>
+
+  <!-- 5. OTel Collector -> Grafana Tempo (Traces - Purple) -->
+  <path d="M 780 575 L 940 575" class="arrow arrow-purple" marker-end="url(#arrow-purple)"/>
+  <g filter="url(#label-shadow)">
+    <rect x="805" y="563" width="120" height="20" class="flow-label-bg" fill="#f3e8ff"/>
+    <text x="865" y="577" class="flow-label" fill="#6b21a8">OTLP Spans / HTTP</text>
+  </g>
+
+  <!-- 6. Node Exporter -> Prometheus (Metrics - Blue) -->
+  <path d="M 410 575 L 485 575 L 485 785 L 940 785" class="arrow arrow-blue" marker-end="url(#arrow-blue)"/>
+  <g filter="url(#label-shadow)">
+    <rect x="585" y="773" width="200" height="20" class="flow-label-bg" fill="#e8f0fe"/>
+    <text x="685" y="787" class="flow-label" fill="#1a73e8">Scrape Host Metrics (Port 9100)</text>
+  </g>
+
+  <!-- 7. cAdvisor -> Prometheus (Metrics - Blue) -->
+  <path d="M 410 815 L 940 815" class="arrow arrow-blue" marker-end="url(#arrow-blue)"/>
+  <g filter="url(#label-shadow)">
+    <rect x="575" y="803" width="220" height="20" class="flow-label-bg" fill="#e8f0fe"/>
+    <text x="685" y="817" class="flow-label" fill="#1a73e8">Scrape Container Metrics (Port 8080)</text>
+  </g>
+
+  <!-- 8. OTel Collector -> Prometheus (Metrics - Blue) -->
+  <path d="M 650 650 L 650 865 L 940 865" class="arrow arrow-blue" marker-end="url(#arrow-blue)"/>
+  <g filter="url(#label-shadow)">
+    <rect x="690" y="853" width="210" height="20" class="flow-label-bg" fill="#e8f0fe"/>
+    <text x="795" y="867" class="flow-label" fill="#1a73e8">Scrape Collector Metrics (Port 8889)</text>
+  </g>
+
+  <!-- 9. Loki -> Grafana (Query Logs - Orange) -->
+  <path d="M 1210 335 L 1330 335 L 1330 475 L 1440 475" class="arrow arrow-orange" marker-end="url(#arrow-orange)"/>
+  <g filter="url(#label-shadow)">
+    <rect x="1275" y="405" width="110" height="20" class="flow-label-bg" fill="#ffe8d6"/>
+    <text x="1330" y="419" class="flow-label" fill="#a63e00">Query Logs (3100)</text>
+  </g>
+
+  <!-- 10. Tempo -> Grafana (Query Traces - Purple) -->
+  <path d="M 1210 575 L 1440 575" class="arrow arrow-purple" marker-end="url(#arrow-purple)"/>
+  <g filter="url(#label-shadow)">
+    <rect x="1270" y="563" width="120" height="20" class="flow-label-bg" fill="#f3e8ff"/>
+    <text x="1330" y="577" class="flow-label" fill="#6b21a8">Query Traces (3200)</text>
+  </g>
+
+  <!-- 11. Prometheus -> Grafana (Query Metrics - Blue) -->
+  <path d="M 1210 815 L 1330 815 L 1330 675 L 1440 675" class="arrow arrow-blue" marker-end="url(#arrow-blue)"/>
+  <g filter="url(#label-shadow)">
+    <rect x="1270" y="735" width="120" height="20" class="flow-label-bg" fill="#e8f0fe"/>
+    <text x="1330" y="749" class="flow-label" fill="#1a73e8">Query Metrics (9090)</text>
+  </g>
+
+
+  <!-- ==================== OUTSIDE CONTAINER SERVICES ==================== -->
+  
+  <!-- User / Browser -->
+  <g transform="translate(150, 45)" filter="url(#shadow)">
+    <rect width="260" height="80" class="card" stroke="#10b981"/>
+    <!-- Header overlay for color accent -->
+    <rect width="260" height="80" class="card-header-bg grad-user"/>
+    <!-- Icon Placeholder container -->
+    <g transform="translate(15, 15)">
+      <!-- User browser icon -->
+      <rect x="2" y="5" width="20" height="12" rx="1.5" fill="none" stroke="#10b981" stroke-width="2"/>
+      <line x1="2" y1="9" x2="22" y2="9" stroke="#10b981" stroke-width="1.5"/>
+      <circle cx="5" cy="7" r="0.8" fill="#10b981"/>
+      <circle cx="8" cy="7" r="0.8" fill="#10b981"/>
+      <path d="M6 17 L18 17" stroke="#10b981" stroke-width="2" stroke-linecap="round"/>
+    </g>
+    <text x="60" y="35" class="card-title">User / Browser</text>
+    <text x="60" y="52" class="card-subtitle">CLIENT WORKLOAD / ACCESS</text>
+    <text x="60" y="67" font-size="10" fill="#64748b" font-weight="500">Initiates traffic and reads endpoints</text>
+  </g>
+
+
+  <!-- ==================== INTERNAL SERVICES ==================== -->
+
+  <!-- notes-app (Col 1, Row 1) -->
+  <g transform="translate(150, 260)" filter="url(#shadow)">
+    <rect width="260" height="150" class="card" stroke="#64748b"/>
+    <rect width="260" height="55" class="card-header-bg grad-app"/>
+    <g transform="translate(15, 12)">
+      <!-- Browser Code Icon -->
+      <rect x="2" y="4" width="20" height="16" rx="2" fill="none" stroke="#475569" stroke-width="2"/>
+      <line x1="2" y1="9" x2="22" y2="9" stroke="#475569" stroke-width="1.5"/>
+      <circle cx="5" cy="6.5" r="0.8" fill="#ef4444"/>
+      <circle cx="8" cy="6.5" r="0.8" fill="#eab308"/>
+      <circle cx="11" cy="6.5" r="0.8" fill="#22c55e"/>
+      <path d="M7 12 l-2 2 2 2 M17 12 l2 2 -2 2 M11 16 l2-4" fill="none" stroke="#475569" stroke-width="1.5" stroke-linecap="round"/>
+    </g>
+    <text x="60" y="30" class="card-title">notes-app</text>
+    <text x="60" y="45" class="card-subtitle">Django Application Container</text>
+    <line x1="0" y1="55" x2="260" y2="55" class="card-divider"/>
+    <text x="20" y="78" class="card-detail">• Port: 8000 (Exposed)</text>
+    <text x="20" y="98" class="card-detail">• Traces: Instrumented OTLP to collector</text>
+    <text x="20" y="118" class="card-detail">• Logs: Standard out JSON stream</text>
+    <text x="20" y="138" class="card-detail">• Workload: PostgreSQL Notes database</text>
+  </g>
+
+  <!-- Node Exporter (Col 1, Row 2) -->
+  <g transform="translate(150, 500)" filter="url(#shadow)">
+    <rect width="260" height="150" class="card" stroke="#3b82f6"/>
+    <rect width="260" height="55" class="card-header-bg grad-host"/>
+    <g transform="translate(15, 12)">
+      <!-- Server Rack Icon -->
+      <rect x="2" y="4" width="20" height="16" rx="2" fill="none" stroke="#3b82f6" stroke-width="2"/>
+      <line x1="2" y1="9" x2="22" y2="9" stroke="#3b82f6" stroke-width="1.5"/>
+      <line x1="2" y1="14" x2="22" y2="14" stroke="#3b82f6" stroke-width="1.5"/>
+      <circle cx="6" cy="6.5" r="1" fill="#22c55e"/>
+      <circle cx="6" cy="11.5" r="1" fill="#22c55e"/>
+      <circle cx="6" cy="16.5" r="1" fill="#22c55e"/>
+    </g>
+    <text x="60" y="30" class="card-title">Node Exporter</text>
+    <text x="60" y="45" class="card-subtitle">Host Metrics Agent</text>
+    <line x1="0" y1="55" x2="260" y2="55" class="card-divider"/>
+    <text x="20" y="78" class="card-detail">• Port: 9100 (Internal Only)</text>
+    <text x="20" y="98" class="card-detail">• Scrapes: Host Machine OS telemetries</text>
+    <text x="20" y="118" class="card-detail">• Core Metrics: CPU, Memory, Disk, Net</text>
+    <text x="20" y="138" class="card-detail">• Format: Prometheus exposition metrics</text>
+  </g>
+
+  <!-- cAdvisor (Col 1, Row 3) -->
+  <g transform="translate(150, 740)" filter="url(#shadow)">
+    <rect width="260" height="150" class="card" stroke="#0284c7"/>
+    <rect width="260" height="55" class="card-header-bg grad-cadvisor"/>
+    <g transform="translate(15, 12)">
+      <!-- Vessel Gear Icon -->
+      <circle cx="12" cy="12" r="4" fill="none" stroke="#0284c7" stroke-width="2"/>
+      <path d="M12 2 L12 5 M12 19 L12 22 M2 12 L5 12 M19 12 L22 12 M5 5 L7 7 M17 17 L19 19 M5 19 L7 17 M17 5 L19 7" stroke="#0284c7" stroke-width="2" stroke-linecap="round"/>
+    </g>
+    <text x="60" y="30" class="card-title">cAdvisor</text>
+    <text x="60" y="45" class="card-subtitle">Container Metrics Agent</text>
+    <line x1="0" y1="55" x2="260" y2="55" class="card-divider"/>
+    <text x="20" y="78" class="card-detail">• Port: 8080 (Internal Only)</text>
+    <text x="20" y="98" class="card-detail">• Analyzes: Daemon container statuses</text>
+    <text x="20" y="118" class="card-detail">• Core Metrics: CPU, Mem, Network, I/O</text>
+    <text x="20" y="138" class="card-detail">• Auto-discovery: Docker socket mounts</text>
+  </g>
+
+  <!-- Promtail (Col 2, Row 1) -->
+  <g transform="translate(520, 260)" filter="url(#shadow)">
+    <rect width="260" height="150" class="card" stroke="#f97316"/>
+    <rect width="260" height="55" class="card-header-bg grad-loki"/>
+    <g transform="translate(15, 12)">
+      <!-- Loki / Log Agent Icon -->
+      <circle cx="12" cy="12" r="11" fill="none" stroke="#f97316" stroke-width="2"/>
+      <path d="M8 8 L12 16 L16 8" stroke="#f97316" stroke-width="2" stroke-linecap="round" fill="none"/>
+    </g>
+    <text x="60" y="30" class="card-title">Promtail</text>
+    <text x="60" y="45" class="card-subtitle">Log Collector Daemon</text>
+    <line x1="0" y1="55" x2="260" y2="55" class="card-divider"/>
+    <text x="20" y="78" class="card-detail">• Port: 9080 (Internal Only)</text>
+    <text x="20" y="98" class="card-detail">• Scans: Docker JSON Log local paths</text>
+    <text x="20" y="118" class="card-detail">• Targets: Dynamic container discovery</text>
+    <text x="20" y="138" class="card-detail">• Actions: Labels metadata, ships to Loki</text>
+  </g>
+
+  <!-- OpenTelemetry Collector (Col 2, Row 2) -->
+  <g transform="translate(520, 500)" filter="url(#shadow)">
+    <rect width="260" height="150" class="card" stroke="#6366f1"/>
+    <rect width="260" height="55" class="card-header-bg grad-otel"/>
+    <g transform="translate(15, 12)">
+      <!-- OpenTelemetry Logo Pattern -->
+      <circle cx="12" cy="12" r="11" fill="none" stroke="#6366f1" stroke-width="2"/>
+      <path d="M12 5 A 7 7 0 1 0 19 12 A 7 7 0 1 0 12 19" fill="none" stroke="#6366f1" stroke-width="2" stroke-linecap="round"/>
+      <circle cx="12" cy="5" r="2.5" fill="#6366f1"/>
+      <circle cx="19" cy="12" r="2.5" fill="#6366f1"/>
+    </g>
+    <text x="60" y="30" class="card-title">OTel Collector</text>
+    <text x="60" y="45" class="card-subtitle">Telemetry Pipeline Agent</text>
+    <line x1="0" y1="55" x2="260" y2="55" class="card-divider"/>
+    <text x="20" y="78" class="card-detail">• Ports: 4317 (gRPC) / 4318 (HTTP)</text>
+    <text x="20" y="98" class="card-detail">• Receivers: OTLP metrics &amp; traces</text>
+    <text x="20" y="118" class="card-detail">• Processors: Batching, filtering, queue</text>
+    <text x="20" y="138" class="card-detail">• Exporters: Prometheus (8889), Debug</text>
+  </g>
+
+  <!-- Loki (Col 3, Row 1) -->
+  <g transform="translate(950, 260)" filter="url(#shadow)">
+    <rect width="260" height="150" class="card" stroke="#ea580c"/>
+    <rect width="260" height="55" class="card-header-bg grad-loki"/>
+    <g transform="translate(15, 12)">
+      <!-- Loki Shield Logo -->
+      <path d="M12 2 L4 5v6c0 4.8 3.4 9.3 8 11 4.6-1.7 8-6.2 8-11V5l-8-3z" fill="none" stroke="#ea580c" stroke-width="2"/>
+      <path d="M12 8 L8 12 L16 12" stroke="#ea580c" stroke-width="2" fill="none" stroke-linecap="round"/>
+    </g>
+    <text x="60" y="30" class="card-title">Loki</text>
+    <text x="60" y="45" class="card-subtitle">Log Database Storage</text>
+    <line x1="0" y1="55" x2="260" y2="55" class="card-divider"/>
+    <text x="20" y="78" class="card-detail">• Port: 3100 (Exposed internally)</text>
+    <text x="20" y="98" class="card-detail">• Logs Storage: Stream-based indexing</text>
+    <text x="20" y="118" class="card-detail">• Features: No-index text search (Fast)</text>
+    <text x="20" y="138" class="card-detail">• Query: LogQL integration in Grafana</text>
+  </g>
+
+  <!-- Tempo (Col 3, Row 2) -->
+  <g transform="translate(950, 500)" filter="url(#shadow)">
+    <rect width="260" height="150" class="card" stroke="#8b5cf6"/>
+    <rect width="260" height="55" class="card-header-bg grad-otel"/>
+    <g transform="translate(15, 12)">
+      <!-- Tempo Trace Cylinders -->
+      <ellipse cx="12" cy="6" rx="6" ry="2.5" fill="none" stroke="#8b5cf6" stroke-width="2"/>
+      <path d="M6 6 v10 A 6 2.5 0 0 0 18 16 v-10" fill="none" stroke="#8b5cf6" stroke-width="2"/>
+      <path d="M6 11 A 6 2.5 0 0 0 18 11" fill="none" stroke="#8b5cf6" stroke-width="1.5"/>
+    </g>
+    <text x="60" y="30" class="card-title">Grafana Tempo</text>
+    <text x="60" y="45" class="card-subtitle">Trace Storage Database</text>
+    <line x1="0" y1="55" x2="260" y2="55" class="card-divider"/>
+    <text x="20" y="78" class="card-detail">• Port: 3200 / 4317 (OTLP)</text>
+    <text x="20" y="98" class="card-detail">• Traces Storage: High-scale distributed</text>
+    <text x="20" y="118" class="card-detail">• Storage: Minimal cost object stores</text>
+    <text x="20" y="138" class="card-detail">• Link: Trace-to-log correlation</text>
+  </g>
+
+  <!-- Prometheus (Col 3, Row 3) -->
+  <g transform="translate(950, 740)" filter="url(#shadow)">
+    <rect width="260" height="150" class="card" stroke="#e6522c"/>
+    <rect width="260" height="55" class="card-header-bg grad-prom"/>
+    <g transform="translate(15, 12)">
+      <!-- Prometheus flame -->
+      <path d="M12 2 L4 18 L20 18 Z" fill="none" stroke="#e6522c" stroke-width="2"/>
+      <circle cx="12" cy="14" r="2" fill="#e6522c"/>
+      <line x1="8" y1="18" x2="16" y2="18" stroke="#e6522c" stroke-width="2"/>
+    </g>
+    <text x="60" y="30" class="card-title">Prometheus</text>
+    <text x="60" y="45" class="card-subtitle">Metrics Storage Database</text>
+    <line x1="0" y1="55" x2="260" y2="55" class="card-divider"/>
+    <text x="20" y="78" class="card-detail">• Port: 9090 (Exposed)</text>
+    <text x="20" y="98" class="card-detail">• Engine: Time-series pulling system</text>
+    <text x="20" y="118" class="card-detail">• Query: PromQL metric analysis</text>
+    <text x="20" y="138" class="card-detail">• Rules: Configurable alerting limits</text>
+  </g>
+
+  <!-- Grafana (Col 4, Rows 1-3 Center) -->
+  <g transform="translate(1450, 360)" filter="url(#shadow)">
+    <rect width="320" height="420" class="card" stroke="#f47b20" stroke-width="2"/>
+    <rect width="320" height="65" class="card-header-bg grad-grafana"/>
+    <g transform="translate(20, 16)">
+      <!-- Grafana Chart Circle Logo -->
+      <circle cx="15" cy="15" r="14" fill="none" stroke="#f47b20" stroke-width="2.5"/>
+      <path d="M5 21 L12 12 L18 17 L25 8" fill="none" stroke="#f47b20" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="12" cy="12" r="2.5" fill="#f47b20"/>
+      <circle cx="18" cy="17" r="2.5" fill="#f47b20"/>
+    </g>
+    <text x="65" y="35" class="card-title" font-size="20">Grafana</text>
+    <text x="65" y="52" class="card-subtitle" font-size="12">Unified Observability GUI</text>
+    <line x1="0" y1="65" x2="320" y2="65" class="card-divider"/>
+    
+    <text x="25" y="95" class="card-title" font-size="14" fill="#1e293b">Key Visualizations:</text>
+    
+    <g transform="translate(25, 115)">
+      <!-- Dashboards icon -->
+      <rect x="0" y="2" width="16" height="12" rx="1.5" fill="none" stroke="#f47b20" stroke-width="1.5"/>
+      <line x1="0" y1="6" x2="16" y2="6" stroke="#f47b20" stroke-width="1.5"/>
+      <line x1="6" y1="6" x2="6" y2="14" stroke="#f47b20" stroke-width="1.5"/>
+      <text x="25" y="12" class="card-detail" font-size="13" font-weight="600">• Single-Pane Dashboards</text>
+    </g>
+
+    <g transform="translate(25, 155)">
+      <circle cx="8" cy="8" r="7" fill="none" stroke="#3b82f6" stroke-width="2"/>
+      <path d="M8 4 L8 8 L12 10" stroke="#3b82f6" stroke-width="1.5" fill="none"/>
+      <text x="25" y="12" class="card-detail" font-size="13" font-weight="600" fill="#1d4ed8">• Prometheus Metrics Panels</text>
+    </g>
+
+    <g transform="translate(25, 195)">
+      <path d="M2 14v-4a4 4 0 0 1 8 0v4m0-4h4a4 4 0 0 1 8 0v4" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round"/>
+      <text x="25" y="12" class="card-detail" font-size="13" font-weight="600" fill="#c2410c">• Loki Logs LogQL Explorer</text>
+    </g>
+
+    <g transform="translate(25, 235)">
+      <circle cx="8" cy="8" r="5" fill="none" stroke="#8b5cf6" stroke-width="2"/>
+      <line x1="12" y1="12" x2="17" y2="17" stroke="#8b5cf6" stroke-width="2" stroke-linecap="round"/>
+      <text x="25" y="12" class="card-detail" font-size="13" font-weight="600" fill="#6d28d9">• Tempo Tracing Correlation</text>
+    </g>
+
+    <g transform="translate(25, 275)">
+      <rect x="1" y="3" width="14" height="10" rx="1.5" fill="none" stroke="#10b981" stroke-width="2"/>
+      <circle cx="11" cy="8" r="1.5" fill="#10b981"/>
+      <text x="25" y="12" class="card-detail" font-size="13" font-weight="600" fill="#047857">• Alerting &amp; Contact Routing</text>
+    </g>
+
+    <line x1="20" y1="315" x2="300" y2="315" class="card-divider"/>
+    
+    <text x="25" y="340" class="card-detail" fill="#475569">• Admin UI Port: 3000 (Exposed)</text>
+    <text x="25" y="360" class="card-detail" fill="#475569">• Data Sources: Auto-provisioned YAML</text>
+    <text x="25" y="380" class="card-detail" fill="#475569">• Integration: Derived traces to logs jump</text>
+  </g>
+
+
+  <!-- ==================== LEGEND & METADATA ==================== -->
+  
+  <!-- Legend Panel -->
+  <g transform="translate(1450, 810)" filter="url(#shadow)">
+    <rect width="320" height="160" class="card" stroke="#cbd5e1"/>
+    <text x="20" y="25" class="legend-title">DIAGRAM LEGEND</text>
+    <line x1="20" y1="35" x2="300" y2="35" class="card-divider"/>
+    
+    <!-- Legend item: Metrics -->
+    <g transform="translate(20, 50)">
+      <line x1="0" y1="10" x2="40" y2="10" class="arrow arrow-blue"/>
+      <circle cx="20" cy="10" r="4" fill="#3b82f6"/>
+      <text x="55" y="14" class="legend-text" fill="#1d4ed8">Metrics Flow (Blue - Pull/Scrape)</text>
+    </g>
+    
+    <!-- Legend item: Logs -->
+    <g transform="translate(20, 80)">
+      <line x1="0" y1="10" x2="40" y2="10" class="arrow arrow-orange"/>
+      <circle cx="20" cy="10" r="4" fill="#f97316"/>
+      <text x="55" y="14" class="legend-text" fill="#c2410c">Logs Flow (Orange - Push/Discover)</text>
+    </g>
+
+    <!-- Legend item: Traces -->
+    <g transform="translate(20, 110)">
+      <line x1="0" y1="10" x2="40" y2="10" class="arrow arrow-purple"/>
+      <circle cx="20" cy="10" r="4" fill="#8b5cf6"/>
+      <text x="55" y="14" class="legend-text" fill="#6d28d9">Traces Flow (Purple - OTLP Spans)</text>
+    </g>
+    
+    <!-- Legend item: User Client -->
+    <g transform="translate(20, 140)">
+      <line x1="0" y1="5" x2="40" y2="5" class="arrow arrow-green"/>
+      <text x="55" y="9" class="legend-text" fill="#047857">Client Traffic (Green - HTTP)</text>
+    </g>
+  </g>
+  
+  <!-- Info Box bottom left -->
+  <g transform="translate(80, 1025)">
+    <text font-size="12" fill="#94a3b8" font-weight="600">Created for: Senior DevOps Engineer Portfolio / README Asset • Observability Stack v1.0 • Vector Graphic SVG</text>
+  </g>
+</svg>

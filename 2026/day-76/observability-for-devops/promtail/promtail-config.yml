@@ -1,0 +1,21 @@
+server:
+  http_listen_port: 9080
+  grpc_listen_port: 0
+
+# Track last-read positions to resume if the agent restarts
+positions:
+  filename: /tmp/positions.yaml
+
+# Defines destination endpoints (your Loki cluster)
+clients:
+  - url: http://loki:3100/loki/api/v1/push
+
+# Defines how and where to discover log files
+scrape_configs:
+  - job_name: docker
+    static_configs:
+      - targets:
+          - prometheus
+        labels:
+          job: docker #You must be careful with this job_name,since it should be same for running logQL queries
+          __path__: /var/log/*log

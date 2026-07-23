@@ -42,3 +42,10 @@ coverage/
 CLAUDE.md
 # Django generated static files
 **/staticfiles/
+# SSH keys
+*.pub
+otel-*
+*.pem
+# Python cache
+__pycache__/
+*.pyc
